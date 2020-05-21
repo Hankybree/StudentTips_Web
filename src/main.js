@@ -3,13 +3,16 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App.vue'
 
+Vue.use(VueRouter)
+Vue.use(Vuex)
+
 const router = new VueRouter({
-  routes: {
+  routes: [
     // VueRouter routes goes here
-  }
+  ]
 })
 
-const store = new Vuex({
+const store = new Vuex.Store({
   state: {
     // Vuex variables goes here
   }
