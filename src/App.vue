@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <header id="head">
-      <p>Jag testar nu fonten</p>
+      <p>Testar fonten</p>
       <!--Header content-->
       <!--maybe some sort of navigation menu-->
     </header>
     <!--a logo that we have created?-->
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="'Welcome to'" />
+    <HelloWorld msg="'Welcome to....'" />
     <footer id="footer">
-      <!--footer content copywrite text?-->
+      <!--footer content, copywrite text?-->
     </footer>
   </div>
 </template>
@@ -28,7 +28,9 @@ export default {
 <style>
 #head {
   height: 2em;
-  background-color: #bd5000;
+  background-color: #ffb042;
+  /*extra bold font*/
+  font-weight: 900;
 }
 #app {
   font-family: Raleway;
@@ -39,10 +41,9 @@ export default {
 }
 #footer {
   position: absolute;
-  margin: 0.25em;
   bottom: 0px;
   height: 25px;
-  width: 100%;
-  background-color: #ffb042;
+  width: 98.3%;
+  background-color: #f3771f;
 }
 </style> 

@@ -28,7 +28,8 @@ export default {
   position: absolute;
   left: 25%;
   margin-top: 5em;
-  background-color: #f77f00;
+  /*primary color*/
+  background-color: #ff8400;
   width: 50%;
   height: 200px;
 }
