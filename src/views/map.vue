@@ -7,19 +7,19 @@
     </div>
     <div id="map-info">
       <input type="button" value="Get pins" @click="getPins()">
+      <input type="button" value="Get single pin" @click="getSinglePin()">
       <div id="post">
         <input v-model="pinTitle">
         <input v-model="pinDescription">
         <input v-model="pinImage">
-        <select v-model="pinTags">
-          <option value="mat">Mat</option>
-          <option value="bok">Bok</option>
-          <option value="öl">Öl</option>
-        </select>
+        <input v-model="pinTags" type="checkbox" value="mat"> Mat
+        <input v-model="pinTags" type="checkbox" value="bok"> Bok
+        <input v-model="pinTags" type="checkbox" value="öl"> Öl
         <input v-model="pinCoordinatesX">
         <input v-model="pinCoordinatesY">
         <input v-model="pinUser">
         <input type="button" value="Post pin" @click="postPin()">
+        <input type="button" value="Patch pin" @click="patchPin()">
       </div>
       <div id="patch"></div>
       <div id=delete>
@@ -108,6 +108,21 @@ export default {
           console.log(result)
         })
     },
+    getSinglePin() {
+      fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId)
+        .then(response => response.json())
+        .then(result => {
+          this.$store.commit('setPinTitle', result.pinTitle)
+          this.$store.commit('setPinDescription', result.pinDescription)
+          this.$store.commit('setPinImage', result.pinImage)
+          this.$store.commit('setPinTags', result.pinTags)
+          this.$store.commit('setPinCoordinatesX', result.pinCoordinates.x)
+          this.$store.commit('setPinCoordinatesY', result.pinCoordinates.y)
+          this.$store.commit('setPinUser', result.pinUser)
+
+          console.log(result)
+        })
+    },
     postPin() {
       fetch('http://116.203.125.0:12001/pins', {
         body: JSON.stringify({
@@ -128,10 +143,25 @@ export default {
       })
     },
     patchPin() {
-
+      fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId, {
+        body: JSON.stringify({
+          pinTitle: this.$store.state.pinTitle,
+          pinDescription: this.$store.state.pinDescription,
+          pinImage: this.$store.state.pinImage,
+          pinTags: this.$store.state.pinTags,
+          pinCoordinates: this.$store.state.pinCoordinates
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PATCH'
+      }).then(response => response)
+      .then(result => {
+        console.log(result)
+      })
     },
     deletePin() {
-      fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId,{ 
+      fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId, { 
         method: 'DELETE' 
         })
         .then(response => response)
@@ -140,7 +170,7 @@ export default {
         })
     },
     print() {
-      console.log(this.$store.state.pinCoordinatesY + " y and x " + this.$store.state.pinCoordinatesX)
+      console.log(this.$store.state.pinTags)
     }
   }
 }

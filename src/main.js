@@ -43,7 +43,7 @@ const store = new Vuex.Store({
       state.pinImage = newImage
     },
     setPinTags(state, newTags) {
-      state.pinTags.push(newTags)
+      state.pinTags = newTags
     },
     setPinCoordinatesX(state, newCoordinatesX) {
       state.pinCoordinates.x = newCoordinatesX
