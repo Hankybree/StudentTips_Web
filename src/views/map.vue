@@ -1,7 +1,15 @@
 <template>
-  <div class="map">
-    <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
-    dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
+  <div class="content">
+    <div id="map">
+      agsg
+      <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
+      dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
+    </div>
+    <div id="map-info">
+      <div id="post"></div>
+      <div id="patch"></div>
+      <div id=delete></div>
+    </div>
   </div>
 </template>
 
@@ -12,5 +20,17 @@ export default {
 </script>
 
 <style scoped>
-/*Style mapview here*/
+  .content {
+    display: flex;
+  }
+  .content > div {
+    width: 50vw;
+    height: 80vh;
+  }
+  #map {
+    background-color: green;
+  }
+  #map-info {
+    background-color: red;
+  }
 </style>
