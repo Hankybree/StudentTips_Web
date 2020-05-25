@@ -20,10 +20,13 @@
         <input v-model="pinCoordinatesY">
         <input v-model="pinUser">
         <input type="button" value="Post pin" @click="postPin()">
-        <input type="button" value="Print" @click="print()">
       </div>
       <div id="patch"></div>
-      <div id=delete></div>
+      <div id=delete>
+        <input v-model="pinId">
+        <input type="button" value="Delete pin" @click="deletePin()">
+      </div>
+      <input type="button" value="Print" @click="print()">
     </div>
   </div>
 </template>
@@ -124,6 +127,18 @@ export default {
         console.log(result)
       })
     },
+    patchPin() {
+
+    },
+    deletePin() {
+      fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId,{ 
+        method: 'DELETE' 
+        })
+        .then(response => response)
+        .then(result => {
+          console.log(result)
+        })
+    },
     print() {
       console.log(this.$store.state.pinCoordinatesY + " y and x " + this.$store.state.pinCoordinatesX)
     }
@@ -146,6 +161,16 @@ export default {
     background-color: red;
   }
   #post {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  }
+  #patch {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  }
+  #delete {
     display: flex;
     flex-direction: column;
     margin: 5px;
