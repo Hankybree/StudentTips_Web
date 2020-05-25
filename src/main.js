@@ -26,7 +26,7 @@ const store = new Vuex.Store({
     pinDescription: "",
     pinImage: "",
     pinTags: [],
-    pinCoordinates: {},
+    pinCoordinates: { x: 0, y: 0 },
     pinUser: -1
   },
   mutations: {
@@ -45,8 +45,11 @@ const store = new Vuex.Store({
     setPinTags(state, newTags) {
       state.pinTags = newTags
     },
-    setPinCoordinates(state, newCoordinates) {
-      state.pinCoordinates = newCoordinates
+    setPinCoordinatesX(state, newCoordinatesX) {
+      state.pinCoordinates.x = newCoordinatesX
+    },
+    setPinCoordinatesY(state, newCoordinatesY) {
+      state.pinCoordinates.y = newCoordinatesY
     },
     setPinUser(state, newUser) {
       state.pinUser = newUser

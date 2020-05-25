@@ -8,7 +8,13 @@
     <div id="map-info">
       <div id="post">
         <input v-model="pinTitle">
-        <input type="button" value="Print" @click="print()">
+        <input v-model="pinDescription">
+        <input v-model="pinImage">
+        <input v-model="pinTags">
+        <input v-model="pinCoordinatesX">
+        <input v-model="pinCoordinatesY">
+        <input v-model="pinUser">
+        <input type="button" value="Print" @click="getPins()">
       </div>
       <div id="patch"></div>
       <div id=delete></div>
@@ -60,12 +66,20 @@ export default {
         this.$store.commit('setPinTags', newTags)
       }
     },
-    pinCoordinates: {
+    pinCoordinatesX: {
       get() {
-        return this.$store.state.pinCoordinates
+        return this.$store.state.pinCoordinates.x
       },
-      set(newCoordinates) {
-        this.$store.commit('setPinCoordinates', newCoordinates)
+      set(newCoordinatesX) {
+        this.$store.commit('setPinCoordinatesX', newCoordinatesX)
+      }
+    },
+    pinCoordinatesY: {
+      get() {
+        return this.$store.state.pinCoordinates.y
+      },
+      set(newCoordinatesY) {
+        this.$store.commit('setPinCoordinatesY', newCoordinatesY)
       }
     },
     pinUser: {
@@ -78,8 +92,12 @@ export default {
     }
   },
   methods: {
-    print() {
-      console.log(this.$store.state.pinTitle)
+    getPins() {
+      fetch('http://116.203.125.0:12001/pins')
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+        })
     }
   }
 }
@@ -98,5 +116,9 @@ export default {
   }
   #map-info {
     background-color: red;
+  }
+  #post {
+    display: flex;
+    flex-direction: column;
   }
 </style>
