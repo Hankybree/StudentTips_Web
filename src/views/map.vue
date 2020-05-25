@@ -6,15 +6,21 @@
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
     <div id="map-info">
+      <input type="button" value="Get pins" @click="getPins()">
       <div id="post">
         <input v-model="pinTitle">
         <input v-model="pinDescription">
         <input v-model="pinImage">
-        <input v-model="pinTags">
+        <select v-model="pinTags">
+          <option value="mat">Mat</option>
+          <option value="bok">Bok</option>
+          <option value="öl">Öl</option>
+        </select>
         <input v-model="pinCoordinatesX">
         <input v-model="pinCoordinatesY">
         <input v-model="pinUser">
-        <input type="button" value="Print" @click="getPins()">
+        <input type="button" value="Post pin" @click="postPin()">
+        <input type="button" value="Print" @click="print()">
       </div>
       <div id="patch"></div>
       <div id=delete></div>
@@ -98,6 +104,28 @@ export default {
         .then(result => {
           console.log(result)
         })
+    },
+    postPin() {
+      fetch('http://116.203.125.0:12001/pins', {
+        body: JSON.stringify({
+          pinTitle: this.$store.state.pinTitle,
+          pinDescription: this.$store.state.pinDescription,
+          pinImage: this.$store.state.pinImage,
+          pinTags: this.$store.state.pinTags,
+          pinCoordinates: this.$store.state.pinCoordinates,
+          pinUser: this.$store.state.pinUser
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }).then(response => response)
+      .then(result => {
+        console.log(result)
+      })
+    },
+    print() {
+      console.log(this.$store.state.pinCoordinatesY + " y and x " + this.$store.state.pinCoordinatesX)
     }
   }
 }
@@ -120,5 +148,6 @@ export default {
   #post {
     display: flex;
     flex-direction: column;
+    margin: 5px;
   }
 </style>
