@@ -28,6 +28,29 @@ const store = new Vuex.Store({
     pinTags: [],
     pinCoordinates: {},
     pinUser: -1
+  },
+  mutations: {
+    setPinId(state, newId) {
+      state.pinId = newId
+    },
+    setPinTitle(state, newTitle) {
+      state.pinTitle = newTitle
+    },
+    setPinDescription(state, newDescription) {
+      state.pinDescription = newDescription
+    },
+    setPinImage(state, newImage) {
+      state.pinImage = newImage
+    },
+    setPinTags(state, newTags) {
+      state.pinTags = newTags
+    },
+    setPinCoordinates(state, newCoordinates) {
+      state.pinCoordinates = newCoordinates
+    },
+    setPinUser(state, newUser) {
+      state.pinUser = newUser
+    }
   }
 })
 
