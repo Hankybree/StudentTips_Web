@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import App from './App.vue'
 import 'typeface-raleway'
 
-import Map from './views/Map.vue'
+import MapView from './views/MapView.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 Vue.use(VueRouter)
@@ -14,7 +14,7 @@ const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
     { component: HelloWorld, path: '/' },
-    { component: Map, path: '/map' }
+    { component: MapView, path: '/map' }
   ]
 })
 

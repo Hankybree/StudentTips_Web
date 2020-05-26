@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "Map",
+  name: "MapView",
   computed: {
     pinId: {
       get() {
