@@ -1,16 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-//import router from './router'
+import Login from './LoginWindow.vue'
+import SignUp from './SignUpWindow.vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import 'typeface-raleway'
-
+//import components
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
 const router = new VueRouter({
   routes: [
-    // VueRouter routes goes here
+    {
+      path: "/",
+      redirect: {
+        name: "Login"
+      }
+    },
+    {
+      path: '/loginwindow',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/signupwindow',
+      name: 'SignUp',
+      component: SignUp
+    }
   ]
 })
 

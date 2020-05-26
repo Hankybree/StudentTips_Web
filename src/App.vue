@@ -7,7 +7,6 @@
     </header>
     <!--a logo that we have created?-->
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="'Welcome to....'" />
     <log-in-window></log-in-window>
     <footer id="footer">
       <!--footer content, copywrite text?-->
@@ -16,13 +15,11 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import LogInWindow from "./components/LogInWindow.vue";
-
+//inget här
 export default {
   name: "App",
   components: {
-    HelloWorld,
     LogInWindow
   }
 };
