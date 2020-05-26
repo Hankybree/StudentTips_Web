@@ -15,13 +15,9 @@
 </template>
 
 <script>
-import LogInWindow from "./components/LogInWindow.vue";
-//inget här
 export default {
   name: "App",
-  components: {
-    LogInWindow
-  }
+  components: {}
 };
 </script>
 
