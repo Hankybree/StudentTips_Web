@@ -1,28 +1,20 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <div id="loginScreen">
-      <!--Login-->
-      <input placeholder="Användarnamn" type="text" name="userName" id="userName" />
-      <br />
-      <input placeholder="Lösenord" type="text" name="passWord" id="passWord" />
-      <br />
-      <input type="button" value="Login" id="loginbtn" />
-      <!--Maybe some forgot password functionality -->
-    </div>
+  <div id="loginScreen">
+    <!--Login-->
+    <input placeholder="Användarnamn" type="text" name="userName" id="userName" />
+    <br />
+    <input placeholder="Lösenord" type="text" name="passWord" id="passWord" />
+    <br />
+    <input type="button" value="Login" id="loginbtn" />
+    <router-link>Glömt ditt Lösenord?</router-link>
+    <!--Maybe some forgot password functionality -->
+    <router-link to="/signup" SignUp>Registrera dig?</router-link>
   </div>
 </template>
-
 <script>
-export default {
-  name: "LogInView",
-  props: {
-    msg: String
-  }
-};
+//import signUp from "./components/SignUpWindow.vue";
+export default {};
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #loginScreen {
   position: absolute;
