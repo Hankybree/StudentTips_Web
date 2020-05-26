@@ -5,7 +5,8 @@ import App from './App.vue'
 import 'typeface-raleway'
 
 import MapView from './views/MapView.vue'
-import LogInView from './components/LogInView.vue'
+import LogInView from './views/LogInView.vue'
+import SignUpView from './views/SignUpView.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -14,6 +15,7 @@ const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
     { component: LogInView, path: '/' },
+    { component: SignUpView, path: '/signup'},
     { component: MapView, path: '/map' }
   ]
 })
