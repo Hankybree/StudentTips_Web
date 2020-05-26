@@ -26,7 +26,7 @@
 
                 return new mapboxgl.Map({
                     container: 'map',
-                    center: [0, 0],
+                    center: [11.989179, 57.690902],
                     zoom: 11,
                     pitch: 10,
                     bearing: -10,
