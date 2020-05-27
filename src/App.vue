@@ -1,12 +1,11 @@
 <template>
   <div id="app">
     <header id="head">
-      <p>Testar fonten</p>
+      <p>Tip Top</p>
       <!--Header content-->
       <!--maybe some sort of navigation menu-->
     </header>
     <!--a logo that we have created?-->
-    <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
     <!-- <HelloWorld msg="'Welcome to....'" /> -->
     <router-view></router-view>
     <footer id="footer">
@@ -18,11 +17,12 @@
 <script>
 export default {
   name: "App"
-}
+};
 </script>
 
 <style>
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
@@ -45,7 +45,7 @@ body, html {
   position: absolute;
   bottom: 0px;
   height: 25px;
-  width: 98.3%;
+  width: 100%;
   background-color: #f3771f;
 }
 </style> 
