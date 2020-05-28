@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <header id="head">
-      <p>Tip Top</p>
+      <p id="headerText">Tip Top</p>
       <!--Header content-->
       <!--maybe some sort of navigation menu-->
     </header>
-    <!--a logo that we have created?-->
-    <!-- <HelloWorld msg="'Welcome to....'" /> -->
     <router-view></router-view>
     <footer id="footer">
       <!--footer content, copywrite text?-->
@@ -27,7 +25,7 @@ html {
   padding: 0;
 }
 #head {
-  height: 2em;
+  height: 3em;
   background-color: #ffb042;
   /*extra bold font*/
   font-weight: 900;
@@ -47,5 +45,8 @@ html {
   height: 25px;
   width: 100%;
   background-color: #f3771f;
+}
+#headerText {
+  font-size: 27pt;
 }
 </style> 
