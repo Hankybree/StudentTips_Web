@@ -8,7 +8,7 @@
 <script>
     import mapboxgl from 'mapbox-gl'
     import 'mapbox-gl/dist/mapbox-gl.css'
-    import {computed} from '../computed.js'
+    import {computed} from '../scripts/computed.js'
 
     export default {
         name: "Map",
@@ -46,6 +46,7 @@
 
                 })
             },
+            
 
         },
         mounted() {
@@ -105,7 +106,24 @@
                             }
                         });
                     });
+
+                    map.on('click', function(e) {
+               
+                        var point = map.queryRenderedFeatures(e.point, {
+                        layers: ['points']
+                    });
+                    
+                      if(point.length){ 
+                          var clickedPoint=point[0]
+                            map.flyTo({
+                                    center: clickedPoint.geometry.coordinates,
+                                    zoom: 15
+                                }); 
+                      }
+                 })
+                
                 }
+                
 
     }
 </script>
