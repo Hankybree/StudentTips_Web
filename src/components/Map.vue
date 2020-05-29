@@ -8,8 +8,11 @@
 <script>
     import mapboxgl from 'mapbox-gl'
     import 'mapbox-gl/dist/mapbox-gl.css'
+    import {computed} from '../computed.js'
+
     export default {
         name: "Map",
+        computed: computed,
         head() {
                     return {
                         script: [

@@ -5,7 +5,12 @@ import App from './App.vue'
 import 'typeface-raleway'
 
 import MapView from './views/MapView.vue'
-//import LogInView from './components/LogInView.vue'
+<<<<<<< HEAD
+import LogInView from './components/LogInView.vue'
+=======
+import LogInView from './views/LogInView.vue'
+import SignUpView from './views/SignUpView.vue'
+>>>>>>> 8c7e93f066c3563a8ed3fe1347ff7344da17c5f2
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
@@ -13,7 +18,12 @@ Vue.use(Vuex)
 const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
-   // { component: LogInView, path: '/' },
+<<<<<<< HEAD
+    { component: LogInView, path: '/' },
+=======
+    { component: LogInView, path: '/' },
+    { component: SignUpView, path: '/signup'},
+>>>>>>> 8c7e93f066c3563a8ed3fe1347ff7344da17c5f2
     { component: MapView, path: '/map' }
   ]
 })
