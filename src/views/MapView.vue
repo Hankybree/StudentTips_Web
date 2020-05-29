@@ -118,6 +118,7 @@
         fetch('http://116.203.125.0:12001/pins/' + this.$store.state.pinId)
           .then(response => response.json())
           .then(result => {
+            
             this.$store.commit('setPinTitle', result.pinTitle)
             this.$store.commit('setPinDescription', result.pinDescription)
             this.$store.commit('setPinImage', result.pinImage)
