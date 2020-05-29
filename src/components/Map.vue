@@ -43,6 +43,7 @@
 
                 })
             },
+            
 
         },
         mounted() {
@@ -102,7 +103,24 @@
                             }
                         });
                     });
+
+                    map.on('click', function(e) {
+               
+                        var point = map.queryRenderedFeatures(e.point, {
+                        layers: ['points']
+                    });
+                    
+                      if(point.length){ 
+                          var clickedPoint=point[0]
+                            map.flyTo({
+                                    center: clickedPoint.geometry.coordinates,
+                                    zoom: 15
+                                }); 
+                      }
+                 })
+                
                 }
+                
 
     }
 </script>
