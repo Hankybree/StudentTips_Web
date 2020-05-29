@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App.vue'
+
 import 'typeface-raleway'
+import {actions} from './scripts/actions.js'
 
 import MapView from './views/MapView.vue'
 import LogInView from './views/LogInView.vue'
@@ -56,7 +58,8 @@ const store = new Vuex.Store({
     setPinUser(state, newUser) {
       state.pinUser = newUser
     }
-  }
+  },
+  actions: actions
 })
 
 Vue.config.productionTip = false
