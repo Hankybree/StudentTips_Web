@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App.vue'
+
 import 'typeface-raleway'
+import {actions} from './scripts/actions.js'
 
 import MapView from './views/MapView.vue'
 import LogInView from './views/LogInView.vue'
@@ -15,6 +17,10 @@ const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
     { component: LogInView, path: '/' },
+<<<<<<< HEAD
+=======
+    { component: SignUpView, path: '/signup'},
+>>>>>>> 6f203a69f262ec6bfdaeac0a4bd1d16f1afde757
     { component: MapView, path: '/map' }
   ]
 })
@@ -55,7 +61,8 @@ const store = new Vuex.Store({
     setPinUser(state, newUser) {
       state.pinUser = newUser
     }
-  }
+  },
+  actions: actions
 })
 
 Vue.config.productionTip = false
