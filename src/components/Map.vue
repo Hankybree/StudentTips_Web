@@ -9,25 +9,12 @@
     import mapboxgl from 'mapbox-gl'
     import 'mapbox-gl/dist/mapbox-gl.css'
     import {computed} from '../computed.js'
+    
 
     export default {
+        
         name: "Map",
         computed: computed,
-        head() {
-                    return {
-                        script: [
-                            { src: "https://cdn.klokantech.com/mapbox-gl-js/v0.43.0/mapbox-gl.js" },
-                            
-                        ],
-                        link: [
-                            {
-                                rel: "stylesheet",
-                                href: "https://cdn.klokantech.com/mapbox-gl-js/v0.43.0/mapbox-gl.css"
-                            }
-                        ]
-                    };
-                },
-         
         methods: {
             map: function () {
 
@@ -36,25 +23,22 @@
                 return new mapboxgl.Map({
                     container: 'map',
                     center: [11.989179, 57.690902],
-                    zoom: 12,
+                    zoom: 10,
                     pitch: 10,
                     bearing: -10,
                     interactive: true,
                     attributionControl: false,
-
                     style: 'mapbox://styles/samieh/ckans78oz3ehp1illrbn63u6i'
 
                 })
             },
+           
             
-
         },
         mounted() {
             let map = this.map()
-            
             map.addControl(new mapboxgl.NavigationControl())
             var features=[]
-            
                 fetch('http://116.203.125.0:12001/pins')
                  .then(response => response.json())
                     .then(result => {
@@ -62,30 +46,28 @@
                              features.push(
                                  {
                                    'type': "Feature",
-                                     
                                      "geometry":{
                                          'type': "Point",
                                           'coordinates':[p.pinCoordinates.x,p.pinCoordinates.y],
-                                    
                                      },
                                      'properties':
                                      {
+                                         'pinId':p.pinId,
                                          'title': p.pinTitle,
-                                         'icon': "bar"
+                                         'tag': [p.pinTags],
+                                         'icon': "bar",
+                                         'Description':p.pinDescription
                                      }
                                  }
                              )
                          });
                     })
-                    
-
            map.on('load', function () {
                         map.addSource('points', {
                             'type': 'geojson',
                             'data': {
                                 'type': "FeatureCollection",
                                 'features': features
-
                             }
                         });
                        
@@ -102,29 +84,30 @@
                                 'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
                                 'text-offset': [0, 0.6],
                                 'text-anchor': 'top',
-                                
                             }
                         });
                     });
 
                     map.on('click', function(e) {
-               
                         var point = map.queryRenderedFeatures(e.point, {
                         layers: ['points']
-                    });
-                    
+                         });
                       if(point.length){ 
                           var clickedPoint=point[0]
+                          //console.log(clickedPoint.properties.pinId)
+                          var desc= clickedPoint.properties.Description
+                         // var tag=clickedPoint.properties.tag
                             map.flyTo({
                                     center: clickedPoint.geometry.coordinates,
                                     zoom: 15
                                 }); 
+                          new mapboxgl.Popup()
+                              .setLngLat(clickedPoint.geometry.coordinates)
+                              .setHTML(desc)
+                              .addTo(map);
                       }
                  })
-                
                 }
-                
-
     }
 </script>
 

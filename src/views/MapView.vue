@@ -9,7 +9,7 @@
       <input type="button" value="Get pins" @click="getPins()">
       <input type="button" value="Get single pin" @click="getSinglePin()">
       <div id="post">
-        <input v-model="pinTitle">
+        <input id="title" v-model="pinTitle">
         <input v-model="pinDescription">
         <input v-model="pinImage">
         <input v-model="pinTags" type="checkbox" value="mat"> Mat
@@ -41,6 +41,7 @@
     components: {
       Map
     },
+    
     computed: computed,
     methods: {
       getPins() {
