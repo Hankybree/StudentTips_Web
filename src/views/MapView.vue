@@ -11,10 +11,17 @@
         <input type="button" value="Get single pin" @click="getSinglePin()" />
       </div>
       <div id="post-info">
-        Post
-        <input v-model="pinTitle" type="text" placeholder="Title" />
-        <input v-model="pinDescription" placeholder="Description" />
-        <input v-model="pinImage" placeholder="Here goes pinImage" />
+        <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data">
+          Post
+          <input name="pinTitle" v-model="pinTitle" type="text" placeholder="Title" />
+          <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
+          <input name="avatar" type="file" />
+
+          <input name="pinUser" v-model="pinUser" />
+          <input name="pinCoordinates" v-model="pinCoordinatesX" />
+          <!-- <input v-model="pinCoordinates" /> -->
+          <input type="submit" value="Upload image" />
+        </form>
         <div style="{display: flex; flex-direction: row;}">
           <input v-model="pinTags" type="checkbox" value="mat" /> Mat
           <input v-model="pinTags" type="checkbox" value="bok" /> Bok
@@ -22,9 +29,6 @@
         </div>
       </div>
       <div>
-        <input v-model="pinCoordinatesX" />
-        <input v-model="pinCoordinatesY" />
-        <input v-model="pinUser" />
         <input type="button" value="Post pin" @click="postPin()" />
         <input type="button" value="Patch pin" @click="patchPin()" />
       </div>
