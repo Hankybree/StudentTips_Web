@@ -5,38 +5,43 @@
       <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
-    <div id="map-info-container">
-      <div id="get-info">
+
+    <div class="pin-post-container">
+      <!--<div id="get-info">
         <input type="button" value="Get pins" @click="getPins()" />
         <input type="button" value="Get single pin" @click="getSinglePin()" />
-      </div>
-      <div id="post-info">
+      </div>-->
+      <div id="post-form">
         <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data">
-          Post
+          <p>Post</p>
           <input name="pinTitle" v-model="pinTitle" type="text" placeholder="Title" />
+
           <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
-          <input name="avatar" type="file" />
 
           <input name="pinUser" v-model="pinUser" />
+
           <input name="pinCoordinates" v-model="pinCoordinatesX" />
+
+          <input name="avatar" type="file" />
           <!-- <input v-model="pinCoordinates" /> -->
           <input type="submit" value="Upload image" />
         </form>
-        <div style="{display: flex; flex-direction: row;}">
-          <input v-model="pinTags" type="checkbox" value="mat" /> Mat
-          <input v-model="pinTags" type="checkbox" value="bok" /> Bok
-          <input v-model="pinTags" type="checkbox" value="öl" /> Öl
+        <div id="post-tags">
+          <input v-model="pinTags" type="button" value="mat" />
+          <input v-model="pinTags" type="button" value="bok" />
+          <input v-model="pinTags" type="button" value="öl" />
+        </div>
+        <div id="post-patch-buttons">
+          <input type="button" value="Post pin" @click="postPin()" />
+          <!--<input type="button" value="Patch pin" @click="patchPin()" /> -->
         </div>
       </div>
-      <div>
-        <input type="button" value="Post pin" @click="postPin()" />
-        <input type="button" value="Patch pin" @click="patchPin()" />
-      </div>
-      <div id="patch"></div>
+
+      <!-- <div id="patch"></div>
       <div id="delete">
         <input v-model="pinId" />
         <input type="button" value="Delete pin" @click="deletePin()" />
-      </div>
+      </div>-->
       <!-- <input type="button" value="Print" @click="print()" /> -->
     </div>
   </div>
@@ -77,32 +82,50 @@ export default {
 
 <style scoped>
 .content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content > div {
-  width: 50vw;
-  height: 80vh;
-}
-
-#map {
-  background-color: white;
-}
-
-#map-info-container {
   background-color: white;
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
-#post-info {
+/*.content > #map {
+  width: 50vw;
+  height: 75vh;
+  align-self: center;
+}*/
+
+.content > #map {
+  width: 50vw;
+  height: 75vh;
+  background-color: white;
+  border-bottom: 2px solid tomato;
+  border-left: 2px solid tomato;
+  border-top: 2px solid tomato;
+  border-right: 2px solid tomato;
+  border-radius: 4px;
+}
+
+.pin-post-container {
+  margin-left: 5px;
+  background-color: white;
+  border: 2px solid black;
+  height: 75vh;
+  border-radius: 4px;
+}
+
+.pin-post-container > div > form > input {
+  border: 2px dotted black;
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  width: 25vw;
+  margin: 1em;
+  padding: 0.2em;
 }
+
+/*.map-info-container > div {
+  display: flex;
+  flex-direction: column;
+}*/
+
 #get-info {
   display: flex;
   flex-direction: column;
