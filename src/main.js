@@ -17,10 +17,7 @@ const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
     { component: LogInView, path: '/' },
-<<<<<<< HEAD
-=======
     { component: SignUpView, path: '/signup'},
->>>>>>> 6f203a69f262ec6bfdaeac0a4bd1d16f1afde757
     { component: MapView, path: '/map' }
   ]
 })
