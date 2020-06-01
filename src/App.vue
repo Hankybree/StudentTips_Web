@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <header id="head">
-      <p id="headerText">Tip Top</p>
-      <!--Header content-->
-      <!--maybe some sort of navigation menu-->
+      <p id="header-text">Tip Top</p>
+      <router-link to="/map">Map</router-link>
     </header>
     <router-view></router-view>
     <footer id="footer">
@@ -25,12 +24,15 @@ html {
   padding: 0;
 }
 #head {
-  height: 3em;
+  height: 10vh;
   background-color: #ffb042;
   /*extra bold font*/
   font-weight: 900;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 20px;
+}
+#head > a {
+  color: white;
+  text-decoration: none;
 }
 #app {
   font-family: Raleway;
@@ -46,7 +48,9 @@ html {
   width: 100%;
   background-color: #f3771f;
 }
-#headerText {
+#header-text {
+  margin: 0;
+  padding: 0;
   font-size: 27pt;
 }
 </style> 
