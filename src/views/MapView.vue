@@ -12,24 +12,24 @@
         <input type="button" value="Get single pin" @click="getSinglePin()" />
       </div>-->
       <div id="post-form">
-        <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data">
+        <!-- <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data"> -->
           <p>Post</p>
-          <input name="pinTitle" v-model="pinTitle" type="text" placeholder="Title" />
+          <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
 
           <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
 
-          <input name="pinUser" v-model="pinUser" />
+          <!-- <input name="pinUser" v-model="pinUser" /> -->
 
+          <input v-model="pinCoordinatesY" />
           <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-          <input name="avatar" type="file" />
-          <!-- <input v-model="pinCoordinates" /> -->
-          <input type="submit" value="Upload image" />
-        </form>
+          <!-- <input name="avatar" type="file" /> -->
+          <!-- <input type="submit" value="Upload image" /> -->
+        <!-- </form> -->
         <div id="post-tags">
-          <input v-model="pinTags" type="button" value="mat" />
-          <input v-model="pinTags" type="button" value="bok" />
-          <input v-model="pinTags" type="button" value="öl" />
+          <input v-model="pinTags" type="checkbox" value="mat" /> Mat
+          <input v-model="pinTags" type="checkbox" value="bok" /> Bok
+          <input v-model="pinTags" type="checkbox" value="öl" /> Öl
         </div>
         <div id="post-patch-buttons">
           <input type="button" value="Post pin" @click="postPin()" />
@@ -113,7 +113,7 @@ export default {
   border-radius: 4px;
 }
 
-.pin-post-container > div > form > input {
+.pin-post-container > div > input {
   border: 2px dotted black;
   display: flex;
   flex-direction: column;

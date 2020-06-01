@@ -41,6 +41,11 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
+            context.commit('setPinTitle', "")
+            context.commit('setPinDescription', "")
+            context.commit('setPinCoordinatesX', 0)
+            context.commit('setPinCoordinatesY', 0)
+            context.commit('setPinTags', [])
     },
     patchPin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {

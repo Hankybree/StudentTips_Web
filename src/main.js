@@ -31,7 +31,7 @@ const store = new Vuex.Store({
     pinImage: "",
     pinTags: [],
     pinCoordinates: { x: 0, y: 0 },
-    pinUser: -1
+    pinUser: 1
   },
   mutations: {
     setPinId(state, newId) {
