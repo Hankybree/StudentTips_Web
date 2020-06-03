@@ -6,6 +6,8 @@
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
 
+    <PinInfo></PinInfo>
+
     <div class="pin-post-container">
       <!--<div id="get-info">
         <input type="button" value="Get pins" @click="getPins()" />
@@ -13,18 +15,18 @@
       </div>-->
       <div id="post-form">
         <!-- <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data"> -->
-          <p>Post</p>
-          <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
+        <p>Post</p>
+        <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
 
-          <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
+        <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
 
-          <!-- <input name="pinUser" v-model="pinUser" /> -->
+        <!-- <input name="pinUser" v-model="pinUser" /> -->
 
-          <input v-model="pinCoordinatesY" />
-          <input name="pinCoordinates" v-model="pinCoordinatesX" />
+        <input v-model="pinCoordinatesY" />
+        <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-          <!-- <input name="avatar" type="file" /> -->
-          <!-- <input type="submit" value="Upload image" /> -->
+        <!-- <input name="avatar" type="file" /> -->
+        <!-- <input type="submit" value="Upload image" /> -->
         <!-- </form> -->
         <div id="post-tags">
           <input v-model="pinTags" type="checkbox" value="mat" /> Mat
@@ -49,12 +51,14 @@
 
 <script>
 import Map from "../components/Map.vue";
+import PinInfo from "../components/PinInfo.vue";
 import { computed } from "../scripts/computed.js";
 
 export default {
   name: "MapView",
   components: {
-    Map
+    Map,
+    PinInfo
   },
   computed: computed,
   methods: {
