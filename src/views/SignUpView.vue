@@ -4,13 +4,15 @@
     <img alt="Vue logo" src="../assets/logo3.png" />
     <div id="signUpScreen">
       <!--SignUp-->
-      <input placeholder="Användarnamn" type="text" name="userName" id="userName" />
+      <input placeholder="Username" type="text" name="userName" id="userName" />
       <br />
-      <input placeholder="Lösenord" type="text" name="passWord" id="passWord" />
+      <input placeholder="Password" type="text" name="passWord" id="passWord" />
       <br />
-      <input type="button" value="Registrera dig" id="registerBtn" />
+      <input placeholder="Email" type="text" name="Email" id="Email" />
       <br />
-      <router-link to="/">Tebax till login?</router-link>
+      <input type="button" value="Register" id="registerBtn" />
+      <br />
+      <router-link to="/">Back to login?</router-link>
     </div>
   </div>
 </template>

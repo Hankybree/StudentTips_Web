@@ -20,6 +20,13 @@
 
         <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
 
+        <input
+          name="pinImage"
+          type="file"
+          id="pin-image"
+          accept="image/x-png, image/gif, image/jpeg"
+        />
+
         <!-- <input name="pinUser" v-model="pinUser" /> -->
 
         <input v-model="pinCoordinatesY" />
@@ -35,6 +42,8 @@
         </div>
         <div id="post-patch-buttons">
           <input type="button" value="Post pin" @click="postPin()" />
+          <input v-model="pinId" />
+          <input type="button" value="Patch pin" @click="patchPin()" />
           <!--<input type="button" value="Patch pin" @click="patchPin()" /> -->
         </div>
       </div>
@@ -70,6 +79,11 @@ export default {
     },
     postPin() {
       this.$store.dispatch("postPin");
+      this.$store.commit("setPinTitle", "");
+      this.$store.commit("setPinDescription", "");
+      this.$store.commit("setPinCoordinatesX", 0);
+      this.$store.commit("setPinCoordinatesY", 0);
+      this.$store.commit("setPinTags", []);
     },
     patchPin() {
       this.$store.dispatch("patchPin");

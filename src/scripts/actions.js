@@ -24,41 +24,41 @@ export const actions = {
             })
     },
     postPin(context) {
+
+        let formData = new FormData()
+
+        formData.append('pinTitle', context.state.pinTitle)
+        formData.append('pinDescription', context.state.pinDescription)
+        formData.append('pinImage', document.querySelector('#pin-image').files[0])
+        formData.append('pinTags', JSON.stringify(context.state.pinTags))
+        formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
+        formData.append('pinUser', context.state.pinUser)
+
         fetch('http://116.203.125.0:12001/pins', {
-            body: JSON.stringify({
-                pinTitle: context.state.pinTitle,
-                pinDescription: context.state.pinDescription,
-                pinImage: context.state.pinImage,
-                pinTags: context.state.pinTags,
-                pinCoordinates: context.state.pinCoordinates,
-                pinUser: context.state.pinUser
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            body: formData,
             method: 'POST'
         }).then(response => response)
             .then(result => {
                 console.log(result)
             })
-            context.commit('setPinTitle', "")
-            context.commit('setPinDescription', "")
-            context.commit('setPinCoordinatesX', 0)
-            context.commit('setPinCoordinatesY', 0)
-            context.commit('setPinTags', [])
     },
     patchPin(context) {
+
+        let formData = new FormData()
+
+        formData.append('pinTitle', context.state.pinTitle)
+        formData.append('pinDescription', context.state.pinDescription)
+        if (document.querySelector('#pin-image').files[0] !== undefined) {
+            formData.append('pinImage', document.querySelector('#pin-image').files[0])
+        } else {
+            formData.append('pinImage', null)
+        }
+        formData.append('pinTags', JSON.stringify(context.state.pinTags))
+        formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
+        formData.append('pinUser', context.state.pinUser)
+    
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
-            body: JSON.stringify({
-                pinTitle: context.state.pinTitle,
-                pinDescription: context.state.pinDescription,
-                pinImage: context.state.pinImage,
-                pinTags: context.state.pinTags,
-                pinCoordinates: context.state.pinCoordinates
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            body: formData,
             method: 'PATCH'
         }).then(response => response)
             .then(result => {
@@ -68,8 +68,7 @@ export const actions = {
     deletePin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             method: 'DELETE'
-        })
-            .then(response => response)
+        }).then(response => response)
             .then(result => {
                 console.log(result)
             })
