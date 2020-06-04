@@ -10,14 +10,27 @@
       <br />
       <input placeholder="Email" type="text" name="Email" id="Email" />
       <br />
-      <input type="button" value="Register" id="registerBtn" />
+      <input @click="postUser()" type="button" value="Register" id="registerBtn" />
       <br />
       <router-link to="/">Back to login?</router-link>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { actions } from "../scripts/actions.js";
+import { computed } from "../scripts/computed.js";
+export default {
+  name: "Signup",
+  computed: {
+    computed,
+    actions
+  },
+  methods: {
+    postUser() {
+      this.$store.dispatch("postUser");
+    }
+  }
+};
 </script>
 <style scoped>
 #signUpScreen {

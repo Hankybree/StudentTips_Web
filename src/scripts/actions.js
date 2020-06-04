@@ -1,3 +1,6 @@
+const { v4: uuidv4 } = require("uuid")
+var uniqeId = uuidv4
+
 export const actions = {
 
     getPins() {
@@ -41,11 +44,11 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
-            context.commit('setPinTitle', "")
-            context.commit('setPinDescription', "")
-            context.commit('setPinCoordinatesX', 0)
-            context.commit('setPinCoordinatesY', 0)
-            context.commit('setPinTags', [])
+        context.commit('setPinTitle', "")
+        context.commit('setPinDescription', "")
+        context.commit('setPinCoordinatesX', 0)
+        context.commit('setPinCoordinatesY', 0)
+        context.commit('setPinTags', [])
     },
     patchPin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
@@ -73,5 +76,32 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
-    }
+    },
+    postUser(context) {
+        fetch('http://localhost:12001/users', {
+            body: JSON.stringify({
+                userId: uniqeId,
+                userName: context.state.userName,
+                userPassword: context.state.passWord,
+                //userEmail: context.state.Email,
+                // userAdmin: context.state.pinTitle,
+                // userImage: context.state.pinTitle,
+                // userDescription: context.state.pinTitle,
+                // userTags: context.state.pinTitle,
+                // userPins: context.state.pinTitle
+
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response)
+            .then(result => {
+                console.log(result)
+            })
+        context.commit('setUserName', "Marcus")
+        context.commit('setPassword', "hejehj")
+        //context.commit('setEmail', 0)
+
+    },
 }

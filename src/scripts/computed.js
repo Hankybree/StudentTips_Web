@@ -63,5 +63,23 @@ export const computed = {
         set(newUser) {
             this.$store.commit('setPinUser', newUser)
         }
+    },
+    userName: {
+        get() {
+            return this.$store.state.userName
+        },
+        set(newUser) {
+            this.$store.commit('setUserName', newUser)
+        }
+
+    },
+    password: {
+        get() {
+            return this.$store.state.password
+        },
+        set(userPassword) {
+            this.$store.commit('setPassword', userPassword)
+        }
+
     }
 }
