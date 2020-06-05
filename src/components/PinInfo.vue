@@ -1,7 +1,7 @@
 <template>
   <div class="PinInfo">
     <div id="img-container">
-      <img src="../assets/kockjakob.jpg" alt="hej" />
+      <!-- <img src="../assets/kockjakob.jpg" alt="hej" /> -->
     </div>Add image
     <input id="pin-image" type="file" name="pinImage" />
 
