@@ -17,14 +17,10 @@
   </div>
 </template>
 <script>
-import { actions } from "../scripts/actions.js";
 import { computed } from "../scripts/computed.js";
 export default {
   name: "Signup",
-  computed: {
-    computed,
-    actions
-  },
+  computed: computed,
   methods: {
     postUser() {
       this.$store.dispatch("postUser");
