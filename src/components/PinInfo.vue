@@ -1,11 +1,12 @@
 <template>
   <div class="PinInfo">
     <div id="img-container">
-      <img src="../assets/kockjakob.jpg" alt="hej" />
+      <img src="../assets/kockjakob.jpg" alt="Här finns ingen bild bild" />
     </div>
     <h2>Title Goes Here</h2>
     <div id="post-container">
-      <input id="pin-image" type="file" name="pinImage" />
+      <input name="pinImage" id="pin-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
+      <input type="button" value="upload" />
       <div id="no-show">don't show me</div>
 
       <input placeholder="Titel" type="text" name="userName" id="user-name" />
@@ -19,10 +20,37 @@
   </div>
 </template>
 <script>
-//import { computed } from "../scripts/computed.js";
+import { computed } from "../scripts/computed.js";
 
 export default {
-  name: "PinInfo"
+  name: "PinInfo",
+
+  computed: computed,
+  methods: {
+    getPins() {
+      this.$store.dispatch("getPins");
+    },
+    getSinglePin() {
+      this.$store.dispatch("getSinglePin");
+    },
+    postPin() {
+      this.$store.dispatch("postPin");
+      this.$store.commit("setPinTitle", "");
+      this.$store.commit("setPinDescription", "");
+      this.$store.commit("setPinCoordinatesX", 0);
+      this.$store.commit("setPinCoordinatesY", 0);
+      this.$store.commit("setPinTags", []);
+    },
+    patchPin() {
+      this.$store.dispatch("patchPin");
+    },
+    deletePin() {
+      this.$store.dispatch("deletePin");
+    },
+    print() {
+      console.log(this.$store.state.pinTags);
+    }
+  }
 };
 </script>
 <style scoped>
