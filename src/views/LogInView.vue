@@ -15,7 +15,6 @@
   </div>
 </template>
 <script>
-//import signUp from "./components/SignUpWindow.vue";
 export default {};
 </script>
 <style scoped>
