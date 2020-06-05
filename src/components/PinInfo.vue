@@ -54,8 +54,6 @@ export default {
 };
 </script>
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=raleway+medium);
-
 .PinInfo {
   display: flex;
   flex-direction: column;
