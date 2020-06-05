@@ -22,7 +22,7 @@ const router = new VueRouter({
   ]
 })
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     // Vuex variables goes here
     pinId: -1,

@@ -9,11 +9,13 @@
     import mapboxgl from 'mapbox-gl'
     import 'mapbox-gl/dist/mapbox-gl.css'
     import {computed} from '../scripts/computed.js'
-
+    import {store} from '../main.js'
     export default {
         
         name: "Map",
+        components:mapboxgl,
         computed: computed,
+        
         methods: {
             map: function () {
 
@@ -31,11 +33,12 @@
 
                 })
             },
-           
+
             
         },
         mounted() {
             let map = this.map()
+            
             map.addControl(new mapboxgl.NavigationControl())
             var features=[]
                 fetch('http://116.203.125.0:12001/pins')
@@ -95,6 +98,7 @@
                           var clickedPoint=point[0]
                           //console.log(clickedPoint.properties.pinId)
                           var desc= clickedPoint.properties.Description
+                          
                          // var tag=clickedPoint.properties.tag
                             map.flyTo({
                                     center: clickedPoint.geometry.coordinates,
@@ -104,6 +108,17 @@
                               .setLngLat(clickedPoint.geometry.coordinates)
                               .setHTML(desc)
                               .addTo(map);
+                      }else{
+                        var p=(e.lngLat)
+                        
+                        store.commit('setPinCoordinatesX',p.lng)
+                        
+                        store.commit('setPinCoordinatesY',p.lat)
+
+                        //  new mapboxgl.Marker()
+                        //       .setLngLat([p.lng, p.lat])
+                        //       .addTo(map);
+
                       }
                  })
                 }
