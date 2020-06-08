@@ -98,13 +98,14 @@ export default {
           .setHTML(desc)
           .addTo(map);
       } else {
-
-        console.log(this.$store)
+        console.log(this.$store);
         var p = e.lngLat;
 
         store.commit("setPinCoordinatesX", p.lng);
 
         store.commit("setPinCoordinatesY", p.lat);
+
+        store.state.pinBool = true;
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])
         //       .addTo(map);

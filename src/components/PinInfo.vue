@@ -1,26 +1,36 @@
 <template>
-  <div class="PinInfo">
+  <div v-if="pinBool" class="PinInfo">
     <div id="img-container">
-      <img src="../assets/kockjakob.jpg" alt="Här finns ingen bild bild" />
+      <img src alt="Här finns ingen bild bild" />
     </div>
     <h2>Title Goes Here</h2>
     <div id="post-container">
       <input name="pinImage" id="pin-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
-      <input type="button" value="upload" />
+
+      <div id="no-show">d</div>
+
+      <input v-model="pinTitle" placeholder="Titel" type="text" name="userName" id="user-name" />
       <div id="no-show">don't show me</div>
 
-      <input placeholder="Titel" type="text" name="userName" id="user-name" />
-      <div id="no-show">don't show me</div>
+      <input v-model="pinCoordinatesY" />
+      <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-      <textarea placeholder="Beskrvning" rows="10" name="userName" id="user-name" />
+      <textarea
+        v-model="pinDescription"
+        placeholder="Beskrvning"
+        rows="10"
+        name="userName"
+        id="user-name"
+      />
       <div>
-        <input type="button" value="Post!" />
+        <input type="button" value="Post!" @click="postPin()" />
       </div>
     </div>
   </div>
 </template>
 <script>
 import { computed } from "../scripts/computed.js";
+//import { store } from "../main.js";
 
 export default {
   name: "PinInfo",
@@ -40,6 +50,7 @@ export default {
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
+      this.$store.commit("setPinBool", false);
     },
     patchPin() {
       this.$store.dispatch("patchPin");
@@ -92,7 +103,6 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   list-style-type: none;
-  height: 100%;
 }
 #no-show {
   visibility: hidden;
@@ -103,6 +113,7 @@ textarea {
   font-family: Raleway;
   font-size: 12pt;
   color: black;
+  position: relative;
 }
 input[type="button"] {
   width: 50px;
