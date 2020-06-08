@@ -5,6 +5,7 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+
 import { computed } from "../scripts/computed.js";
 import { store } from "../main.js";
 export default {
@@ -97,13 +98,14 @@ export default {
           .setHTML(desc)
           .addTo(map);
       } else {
-
-        console.log(this.$store)
+        console.log(this.$store);
         var p = e.lngLat;
 
         store.commit("setPinCoordinatesX", p.lng);
 
         store.commit("setPinCoordinatesY", p.lat);
+
+        store.state.pinBool = true;
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])
         //       .addTo(map);

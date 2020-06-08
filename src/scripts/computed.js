@@ -63,5 +63,13 @@ export const computed = {
         set(newUser) {
             this.$store.commit('setPinUser', newUser)
         }
+    },
+    pinBool: {
+        get() {
+            return this.$store.state.pinBool
+        },
+        set(newPinBool) {
+            this.$store.commit('setPinBool', newPinBool)
+        }
     }
 }
