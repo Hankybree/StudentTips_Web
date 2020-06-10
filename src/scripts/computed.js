@@ -1,5 +1,8 @@
+import { Store } from "vuex"
+
 export const computed = {
 
+    //computed properties for pins
     pinId: {
         get() {
             return this.$store.state.pinId
@@ -63,5 +66,33 @@ export const computed = {
         set(newUser) {
             this.$store.commit('setPinUser', newUser)
         }
+    },
+
+
+    //computed properties for users
+    userName: {
+        get() {
+            return this.$store.state.userName
+        },
+        set(newUserName) {
+            this.$store.commit('setUserName', newUserName)
+        }
+    }, 
+    userPassword: {
+        get() {
+            return this.$store.state.userPassword
+        },
+        set(newUserPassword) {
+            this.$store.commit('setUserPassword', newUserPassword)
+        }
+    },
+    userEmail: {
+        get() {
+            return this.$store.state.userEmail
+        },
+        set(newUserEmail) {
+            this.$store.commit('setUserEmail', newUserEmail)
+        }
     }
+
 }
