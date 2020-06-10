@@ -24,6 +24,7 @@
       />
       <div>
         <input type="button" value="Post!" @click="postPin()" />
+        <input type="button" value="Delete!" @click="deletePin()" />
       </div>
     </div>
   </div>

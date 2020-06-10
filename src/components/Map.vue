@@ -85,9 +85,13 @@ export default {
       });
       if (point.length) {
         var clickedPoint = point[0];
+
         //console.log(clickedPoint.properties.pinId)
         var desc = clickedPoint.properties.Description;
+        console.log(desc);
+        //Här kan vi se innehållet i en pin: kan detta aanvändas för att skapa get pin?
 
+        console.log(clickedPoint.properties.pinId);
         // var tag=clickedPoint.properties.tag
         map.flyTo({
           center: clickedPoint.geometry.coordinates,
