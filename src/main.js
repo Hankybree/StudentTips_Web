@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 import App from './App.vue'
 
 import 'typeface-raleway'
-import {actions} from './scripts/actions.js'
+import { actions } from './scripts/actions.js'
 
 import MapView from './views/MapView.vue'
 import LogInView from './views/LogInView.vue'
@@ -17,12 +17,12 @@ const router = new VueRouter({
   routes: [
     // VueRouter routes goes here
     { component: LogInView, path: '/' },
-    { component: SignUpView, path: '/signup'},
+    { component: SignUpView, path: '/signup' },
     { component: MapView, path: '/map' }
   ]
 })
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     // Vuex variables goes here
     pinId: -1,
@@ -31,7 +31,8 @@ const store = new Vuex.Store({
     pinImage: "",
     pinTags: [],
     pinCoordinates: { x: 0, y: 0 },
-    pinUser: 1
+    pinUser: 1,
+    pinBool: false
   },
   mutations: {
     setPinId(state, newId) {
@@ -57,6 +58,9 @@ const store = new Vuex.Store({
     },
     setPinUser(state, newUser) {
       state.pinUser = newUser
+    },
+    setPinBool(state, newPinBool) {
+      state.pinBool = newPinBool
     }
   },
   actions: actions
