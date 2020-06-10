@@ -8,30 +8,33 @@
 
     <PinInfo></PinInfo>
 
-    <div class="pin-post-container">
-      <!--<div id="get-info">
+    <!--<div class="pin-post-container">
+      <div id="get-info">
         <input type="button" value="Get pins" @click="getPins()" />
         <input type="button" value="Get single pin" @click="getSinglePin()" />
-      </div>-->
-      <div id="post-form">
-        <!-- <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data"> -->
+    </div>-->
+    <!--<div id="post-form">
+         <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data"> 
+        <p>Post</p>
+        <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
 
-          <p>Post</p>
-          <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
+        <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
 
-          <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
+        <input
+          name="pinImage"
+          type="file"
+          id="pin-image"
+          accept="image/x-png, image/gif, image/jpeg"
+        />
 
-          <input name="pinImage" type="file" id="pin-image" accept="image/x-png,image/gif,image/jpeg">
+        <input name="pinUser" v-model="pinUser" /> 
 
-          <!-- <input name="pinUser" v-model="pinUser" /> -->
+        <input v-model="pinCoordinatesY" />
+        <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-          <input v-model="pinCoordinatesY" />
-          <input name="pinCoordinates" v-model="pinCoordinatesX" />
-
-          <!-- <input name="avatar" type="file" /> -->
-          <!-- <input type="submit" value="Upload image" /> -->
-
-        <!-- </form> -->
+         <input name="avatar" type="file" /> 
+         <input type="submit" value="Upload image" /> 
+         </form> 
         <div id="post-tags">
           <input v-model="pinTags" type="checkbox" value="mat" /> Mat
           <input v-model="pinTags" type="checkbox" value="bok" /> Bok
@@ -39,26 +42,25 @@
         </div>
         <div id="post-patch-buttons">
           <input type="button" value="Post pin" @click="postPin()" />
-          <input v-model="pinId">
-          <input type="button" value="Patch pin" @click="patchPin()">
-          <!--<input type="button" value="Patch pin" @click="patchPin()" /> -->
-        </div>
+          <input v-model="pinId" />
+          <input type="button" value="Patch pin" @click="patchPin()" />
+          <input type="button" value="Patch pin" @click="patchPin()" />
+        </div> 
       </div>
 
-      <!-- <div id="patch"></div>
+      <div id="patch"></div>
       <div id="delete">
         <input v-model="pinId" />
         <input type="button" value="Delete pin" @click="deletePin()" />
-      </div>-->
-      <!-- <input type="button" value="Print" @click="print()" /> -->
-    </div>
+      </div>
+      <input type="button" value="Print" @click="print()" />
+    </div>-->
   </div>
 </template>
 
 <script>
 import Map from "../components/Map.vue";
 import PinInfo from "../components/PinInfo.vue";
-
 import { computed } from "../scripts/computed.js";
 
 export default {
@@ -76,12 +78,12 @@ export default {
       this.$store.dispatch("getSinglePin");
     },
     postPin() {
-      this.$store.dispatch("postPin")
-      this.$store.commit('setPinTitle', "")
-      this.$store.commit('setPinDescription', "")
-      this.$store.commit('setPinCoordinatesX', 0)
-      this.$store.commit('setPinCoordinatesY', 0)
-      this.$store.commit('setPinTags', [])
+      this.$store.dispatch("postPin");
+      this.$store.commit("setPinTitle", "");
+      this.$store.commit("setPinDescription", "");
+      this.$store.commit("setPinCoordinatesX", 0);
+      this.$store.commit("setPinCoordinatesY", 0);
+      this.$store.commit("setPinTags", []);
     },
     patchPin() {
       this.$store.dispatch("patchPin");

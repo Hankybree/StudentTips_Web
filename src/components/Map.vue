@@ -5,6 +5,7 @@
 <script>
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+
 import { computed } from "../scripts/computed.js";
 import { store } from "../main.js";
 export default {
@@ -112,7 +113,7 @@ export default {
           .setHTML(desc)
           .addTo(map);
       } else {
-
+        console.log(this.$store);
         var p = e.lngLat;
         store.commit("setPinTitle","")
         store.commit("setPinDescription", "")
