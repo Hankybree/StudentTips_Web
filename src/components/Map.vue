@@ -50,6 +50,7 @@ export default {
               pinId: p.pinId,
               title: p.pinTitle,
               tag: p.pinTags,
+              //image: p.pinImage,
               icon:"bar",
               
               Description: p.pinDescription
@@ -118,8 +119,10 @@ export default {
         store.commit("setPinTitle","")
         store.commit("setPinDescription", "")
         store.commit("setPinTags", "")
+        //store.commit("setPinImage", p.image)
         store.commit("setPinCoordinatesX", p.lng);
         store.commit("setPinCoordinatesY", p.lat);
+        store.commit("setPinBool", true)
 
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])
