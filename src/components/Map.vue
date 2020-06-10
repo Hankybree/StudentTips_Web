@@ -24,7 +24,9 @@ export default {
         bearing: -10,
         interactive: true,
         attributionControl: false,
-        style: "mapbox://styles/samieh/ckans78oz3ehp1illrbn63u6i"
+        style:"mapbox://styles/samieh/ckans78oz3ehp1illrbn63u6i"
+        
+        
       });
     }
   },
@@ -46,14 +48,19 @@ export default {
             properties: {
               pinId: p.pinId,
               title: p.pinTitle,
-              tag: [p.pinTags],
-              icon: "bar",
+              tag: p.pinTags,
+              icon:"bar",
+              
               Description: p.pinDescription
             }
           });
+          
         });
       });
     map.on("load", function() {
+      map.loadImage("https://i.ibb.co/C2GZ9P2/pin.png", function (error, image) { //this is where we load the image file 
+        if (error) throw error;
+        map.addImage("custom-marker", image);
       map.addSource("points", {
         type: "geojson",
         data: {
@@ -67,9 +74,11 @@ export default {
         type: "symbol",
         source: "points",
         layout: {
-          // get the icon name from the source's "icon" property
-          // concatenate the name to get an icon from the style's sprite sheet
-          "icon-image": ["concat", ["get", "icon"], "-15"],
+          
+          "icon-image": "custom-marker",
+          "icon-allow-overlap": false,
+          "icon-size": 0.5,
+          // ["concat", ["get", "icon"], "-15"],
           // get the title name from the source's "title" property
           "text-field": ["get", "title"],
           "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
@@ -78,16 +87,22 @@ export default {
         }
       });
     });
+  })
     map.on("click", function(e) {
       var point = map.queryRenderedFeatures(e.point, {
         layers: ["points"]
       });
       if (point.length) {
         var clickedPoint = point[0];
-        //console.log(clickedPoint.properties.pinId)
+        
+        store.commit("setPinTags", clickedPoint.properties.tag)
+        store.commit("setPinTitle",clickedPoint.properties.title)
+        store.commit("setPinCoordinatesX", clickedPoint.geometry.coordinates[0]);
+        
+        store.commit("setPinCoordinatesY",clickedPoint.geometry.coordinates[1]);
         var desc = clickedPoint.properties.Description;
+        store.commit("setPinDescription",desc)
 
-        // var tag=clickedPoint.properties.tag
         map.flyTo({
           center: clickedPoint.geometry.coordinates,
           zoom: 15
@@ -98,12 +113,13 @@ export default {
           .addTo(map);
       } else {
 
-        console.log(this.$store)
         var p = e.lngLat;
-
+        store.commit("setPinTitle","")
+        store.commit("setPinDescription", "")
+        store.commit("setPinTags", "")
         store.commit("setPinCoordinatesX", p.lng);
-
         store.commit("setPinCoordinatesY", p.lat);
+
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])
         //       .addTo(map);
@@ -111,6 +127,7 @@ export default {
     });
   }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
