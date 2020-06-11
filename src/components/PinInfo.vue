@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="pinBool" class="PinInfo">
+    <div v-if="pinInt === 1" class="PinInfo">
       <div id="img-container">
         <img src alt="Här finns ingen bild bild" />
       </div>
@@ -37,13 +37,14 @@
         />
         <div>
           <input type="button" value="Post!" @click="postPin()" />
-          <input type="button" value="Back" @click="changePinBool()" />
+          <input type="button" value="Back" @click="changePinInt()" />
         </div>
       </div>
     </div>
-    <input type="button" value="Front" @click="changePinBool()" />
   </div>
 </template>
+
+
 <script>
 import { computed } from "../scripts/computed.js";
 //import { store } from "../main.js";
@@ -66,7 +67,6 @@ export default {
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
-      this.$store.commit("setPinBool", false);
     },
     patchPin() {
       this.$store.dispatch("patchPin");
@@ -74,8 +74,8 @@ export default {
     deletePin() {
       this.$store.dispatch("deletePin");
     },
-    changePinBool() {
-      this.$store.dispatch("changePinBool");
+    changePinInt() {
+      this.$store.dispatch("changePinInt");
     },
     print() {
       console.log(this.$store.state.pinTags);
@@ -83,6 +83,8 @@ export default {
   }
 };
 </script>
+
+
 <style scoped>
 .PinInfo {
   display: flex;

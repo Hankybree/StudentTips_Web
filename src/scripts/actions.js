@@ -1,3 +1,5 @@
+
+
 export const actions = {
 
     getPins() {
@@ -33,21 +35,25 @@ export const actions = {
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
-        context.commit('setPinBool', false)
+        context.commit('setPinInt', 0)
         console.log(context.state.pinBool)
 
-        if (formData.get('pinTitle') !== ("")) {
-            fetch('http://116.203.125.0:12001/pins', {
-                body: formData,
-                method: 'POST'
-            }).then(response => response)
-                .then(result => {
-                    console.log(result)
-                })
-        } else {
-            console.log("did not send")
-            context.commit('setPinBool', true)
-        }
+
+        fetch('http://116.203.125.0:12001/pins', {
+            body: formData,
+            headers: {
+                'Token': localStorage.getItem('token')
+            },
+            method: 'POST'
+        }).then(response => response)
+            .then(result => {
+                console.log(result)
+            })
+        context.commit('setPinTitle', "")
+        context.commit('setPinDescription', "")
+        context.commit('setPinCoordinatesX', 0)
+        context.commit('setPinCoordinatesY', 0)
+        context.commit('setPinTags', [])
     },
     patchPin(context) {
 
@@ -80,12 +86,54 @@ export const actions = {
                 console.log(result)
             })
     },
-    changePinBool(context) {
-        if (context.state.pinBool === true) {
-            context.commit('setPinBool', false)
-        } else if (context.state.pinBool === false) {
-            context.commit('setPinBool', true)
+
+    //actions for user data
+    signup(context) {
+
+        let formData = new FormData()//formData holds and transfers the data from a form to a backend server
+
+        formData.append('userName', context.state.userName)
+        formData.append('userPassword', context.state.userPassword)
+        formData.append('userEmail', context.state.userEmail)
+
+        fetch('http://116.203.125.0:12001/signup', {
+            body: formData,
+            method: 'POST'
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === 2) {
+                    console.log(result.status)
+                    alert("User name taken!")
+                } else {
+                    window.location.replace("http://localhost:8080/#/")
+                }
+            })
+    },
+    login(context) {
+        fetch('http://116.203.125.0:12001/login', {
+            body: JSON.stringify({
+                userName: context.state.userName,
+                userPassword: context.state.userPassword
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json())
+            .then(result => {
+
+                localStorage.setItem('token', result.token)
+
+                console.log(result.status)
+                if (result.status === 1 || result.status === 3) {
+                    window.location.replace("http://localhost:8080/#/map")
+                }
+            })
+    },
+    changePinInt(context) {
+        if (context.state.pinInt != 0) {
+            context.state.pinInt = 0
         }
     }
-
 }

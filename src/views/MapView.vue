@@ -2,10 +2,10 @@
   <div class="content">
     <div id="map">
       <Map></Map>
+      <router-link to="/" SignUp>Home</router-link>
       <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
-
     <PinInfo></PinInfo>
 
     <!--<div class="pin-post-container">
@@ -69,32 +69,7 @@ export default {
     Map,
     PinInfo
   },
-  computed: computed,
-  methods: {
-    getPins() {
-      this.$store.dispatch("getPins");
-    },
-    getSinglePin() {
-      this.$store.dispatch("getSinglePin");
-    },
-    postPin() {
-      this.$store.dispatch("postPin");
-      this.$store.commit("setPinTitle", "");
-      this.$store.commit("setPinDescription", "");
-      this.$store.commit("setPinCoordinatesX", 0);
-      this.$store.commit("setPinCoordinatesY", 0);
-      this.$store.commit("setPinTags", []);
-    },
-    patchPin() {
-      this.$store.dispatch("patchPin");
-    },
-    deletePin() {
-      this.$store.dispatch("deletePin");
-    },
-    print() {
-      console.log(this.$store.state.pinTags);
-    }
-  }
+  computed: computed
 };
 </script>
 
