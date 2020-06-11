@@ -41,8 +41,11 @@ export const actions = {
 
         fetch('http://116.203.125.0:12001/pins', {
             body: formData,
+            headers: {
+                'Token': localStorage.getItem('token')
+            },
             method: 'POST'
-        }).then(response => response)
+        }).then(response => response.json())
             .then(result => {
                 console.log(result)
             })
@@ -119,6 +122,9 @@ export const actions = {
             method: 'POST'
         }).then(response => response.json())
             .then(result => {
+
+                localStorage.setItem('token', result.token)
+
                 console.log(result.status)
                 if (result.status === 1 || result.status === 3) {
                     window.location.replace("http://localhost:8080/#/map")
