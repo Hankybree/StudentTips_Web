@@ -2,7 +2,9 @@
   <div>
     <br />
     <img alt="Vue logo" src="../assets/logo3.png" />
-    <div id="loginScreen">
+    
+    <!-- div showing if NOT logged in -->
+    <div v-if="!loggedIn" class="loginScreen">
       <!--Login-->
       <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
       <br />
@@ -12,25 +14,37 @@
       <br />
       <router-link to="/signup" SignUp>Register?</router-link>
     </div>
+    
+    <!-- div showing if logged in -->
+    <div v-if="loggedIn" class="loginScreen">
+      <!-- Visa profiluppgifter
+      visa profilbild
+      Logga ut-alternativ -->
+
+      <input placeholder="Password" type="text" name="passWord" id="passWord" />
+    </div>
   </div>
 </template>
-<script>
-import { computed } from "../scripts/computed";
 
+
+<script>
+import { computed } from '../scripts/computed';
 export default {
-  name: "login",
+  name: "loginView",
   methods: {
     logIn() {
-      this.$store.dispatch("getUser");
+      this.$store.dispatch("login");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
     }
   },
   computed: computed
-};
+}
 </script>
+
+
 <style scoped>
-#loginScreen {
+.loginScreen {
   position: absolute;
   left: 25%;
   margin-top: 5em;

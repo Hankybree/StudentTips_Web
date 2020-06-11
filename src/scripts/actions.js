@@ -45,7 +45,7 @@ export const actions = {
                 'Token': localStorage.getItem('token')
             },
             method: 'POST'
-        }).then(response => response.json())
+        }).then(response => response)
             .then(result => {
                 console.log(result)
             })
@@ -88,7 +88,7 @@ export const actions = {
     },
 
     //actions for user data
-    postUser(context) {
+    signup(context) {
 
         let formData = new FormData()//formData holds and transfers the data from a form to a backend server
 
@@ -110,7 +110,7 @@ export const actions = {
                 }
             })
     },
-    getUser(context) {
+    login(context) {
         fetch('http://116.203.125.0:12001/login', {
             body: JSON.stringify({
                 userName: context.state.userName,
