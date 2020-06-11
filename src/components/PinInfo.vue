@@ -29,6 +29,8 @@
     </div>
   </div>
 </template>
+
+
 <script>
 import { computed } from "../scripts/computed.js";
 //import { store } from "../main.js";
@@ -65,6 +67,8 @@ export default {
   }
 };
 </script>
+
+
 <style scoped>
 .PinInfo {
   display: flex;

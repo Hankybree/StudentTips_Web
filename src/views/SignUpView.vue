@@ -9,19 +9,22 @@
       <!-- added v-model and onClick function -->
       <input placeholder="Username" type="text" name="userName" v-model="userName" id="userName" />
       <br />
-      <input placeholder="Password" type="text" name="userPassword" v-model="userPassword" id="passWord" />
+      <input placeholder="Password" type="password" name="userPassword" v-model="userPassword" id="passWord" />
       <br />
       <input placeholder="Email" type="text" name="userEmail" v-model="userEmail" id="Email" />
       <br />
+      <input name="userImage" id="user-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
+      <br />
       <input type="button" value="Register" id="registerBtn" @click="postUser()"/>
       <br />
-      <router-link to="/">Back to login?</router-link>
+      <router-link to="/">Cancel</router-link>
     </div>
   </div>
 </template>
-<script>
 
-import { computed } from "../scripts/computed.js" // should we import this?
+
+<script>
+import { computed } from "../scripts/computed.js"
 
 export default {
   name: "SignUpView",
@@ -33,10 +36,13 @@ export default {
       this.$store.commit('setUserName', "")
       this.$store.commit('setUserPassword', "")
       this.$store.commit('setUserEmail', "")
+      
     }
   }
 }
 </script>
+
+
 <style scoped>
 #signUpScreen {
   position: absolute;

@@ -96,9 +96,15 @@ export const actions = {
         fetch('http://116.203.125.0:12001/signup', {
             body: formData,
             method: 'POST'
-        }).then(response => response)
+        }).then(response => response.json())
             .then(result => {
                 console.log(result)
+                if (result.status === 2) {
+                    console.log(result.status)
+                    alert("User name taken!")
+                } else {
+                    window.location.replace("http://localhost:8080/#/")
+                }
             })
     },
     getUser(context) {
