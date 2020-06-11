@@ -33,7 +33,7 @@ export default {
   name: "loginView",
   methods: {
     logIn() {
-      this.$store.dispatch("getUser");
+      this.$store.dispatch("login");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
     }

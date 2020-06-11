@@ -70,33 +70,7 @@ export default {
     Map,
     PinInfo
   },
-  computed: computed,
-  methods: {
-    getPins() {
-      this.$store.dispatch("getPins");
-    },
-    getSinglePin() {
-      this.$store.dispatch("getSinglePin");
-    },
-    postPin() {
-      this.$store.dispatch("postPin");
-      this.$store.commit("setPinTitle", "");
-      this.$store.commit("setPinDescription", "");
-      this.$store.commit("setPinCoordinatesX", 0);
-      this.$store.commit("setPinCoordinatesY", 0);
-      this.$store.commit("setPinTags", []);
-      window.location.reload
-    },
-    patchPin() {
-      this.$store.dispatch("patchPin");
-    },
-    deletePin() {
-      this.$store.dispatch("deletePin");
-    },
-    print() {
-      console.log(this.$store.state.pinTags);
-    }
-  }
+  computed: computed
 };
 </script>
 
