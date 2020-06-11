@@ -59,7 +59,4 @@ export default {
 #passWord {
   margin-top: 2em;
 }
-#user-image {
-
-}
 </style>

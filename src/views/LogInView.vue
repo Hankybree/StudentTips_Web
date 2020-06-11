@@ -6,11 +6,11 @@
     <!-- div showing if NOT logged in -->
     <div v-if="loggedIn" class="loginScreen">
       <!--Login-->
-      <input placeholder="Username" type="text" name="userName" id="userName" />
+      <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
       <br />
-      <input placeholder="Password" type="text" name="passWord" id="passWord" />
+      <input placeholder="Password" type="password" name="passWord" id="passWord" v-model="userPassword"/>
       <br />
-      <input type="button" value="Login" id="loginbtn" />
+      <input type="button" value="Login" id="loginbtn" @click="logIn()" />
       <br />
       <router-link to="/signup" SignUp>Register?</router-link>
     </div>
@@ -32,10 +32,14 @@ import { computed } from '../scripts/computed';
 export default {
   name: "loginView",
   methods: {
-    
+    logIn() {
+      this.$store.dispatch("getUser");
+      this.$store.commit("setUserName", "");
+      this.$store.commit("setUserPassword", "");
+    }
   },
   computed: computed
-};
+}
 </script>
 
 

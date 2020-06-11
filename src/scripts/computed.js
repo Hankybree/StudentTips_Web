@@ -108,6 +108,6 @@ export const computed = {
         },
         set(newUserEmail) {
             this.$store.commit('setUserEmail', newUserEmail)
-        },
+        }
     }
 }
