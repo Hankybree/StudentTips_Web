@@ -115,7 +115,7 @@ export const actions = {
             .then(result => {
                 console.log(result.status)
                 if (result.status === 1 || result.status === 3) {
-                    window.location.replace("http://localhost:8081/#/map")
+                    window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
