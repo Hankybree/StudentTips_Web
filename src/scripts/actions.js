@@ -35,12 +35,15 @@ export const actions = {
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
-        context.commit('setPinBool', false)
+        context.commit('setPinInt', 0)
         console.log(context.state.pinBool)
 
 
         fetch('http://116.203.125.0:12001/pins', {
             body: formData,
+            headers: {
+                'Token': localStorage.getItem('token')
+            },
             method: 'POST'
         }).then(response => response)
             .then(result => {
@@ -85,7 +88,7 @@ export const actions = {
     },
 
     //actions for user data
-    postUser(context) {
+    signup(context) {
 
         let formData = new FormData()//formData holds and transfers the data from a form to a backend server
 
@@ -107,7 +110,7 @@ export const actions = {
                 }
             })
     },
-    getUser(context) {
+    login(context) {
         fetch('http://116.203.125.0:12001/login', {
             body: JSON.stringify({
                 userName: context.state.userName,
@@ -119,10 +122,18 @@ export const actions = {
             method: 'POST'
         }).then(response => response.json())
             .then(result => {
+
+                localStorage.setItem('token', result.token)
+
                 console.log(result.status)
                 if (result.status === 1 || result.status === 3) {
                     window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
+    changePinInt(context) {
+        if (context.state.pinInt != 0) {
+            context.state.pinInt = 0
+        }
+    }
 }
