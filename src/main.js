@@ -32,7 +32,7 @@ export const store = new Vuex.Store({
     pinTags: [],
     pinCoordinates: { x: 0, y: 0 },
     pinUser: 1,
-    pinBool: false
+    pinBool: false,
   },
   mutations: {
     setPinId(state, newId) {
