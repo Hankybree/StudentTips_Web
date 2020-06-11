@@ -127,7 +127,6 @@ export default {
           .setHTML(desc)
           .addTo(map);
       } else {
-        console.log(this.$store);
         var p = e.lngLat;
         store.commit("setPinTitle", "");
         store.commit("setPinDescription", "");

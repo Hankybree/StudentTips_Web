@@ -1,32 +1,47 @@
 <template>
-  <div v-if="pinBool" class="PinInfo">
-    <div id="img-container">
-      <img src alt="Här finns ingen bild bild" />
-    </div>
-    <h2>Title Goes Here</h2>
-    <div id="post-container">
-      <input name="pinImage" id="pin-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
+  <div>
+    <div v-if="pinBool" class="PinInfo">
+      <div id="img-container">
+        <img src alt="Här finns ingen bild bild" />
+      </div>
+      <h2>Title Goes Here</h2>
+      <div id="post-container">
+        <input
+          name="pinImage"
+          id="pin-image"
+          type="file"
+          accept="image/x-png, image/gif, image/jpeg"
+        />
 
-      <div id="no-show">d</div>
+        <div id="no-show">d</div>
 
-      <input v-model="pinTitle" placeholder="Titel" type="text" name="userName" id="user-name" />
-      <div id="no-show">don't show me</div>
+        <input
+          v-model="pinTitle"
+          placeholder="Titel"
+          type="text"
+          name="userName"
+          id="user-name"
+          required
+        />
+        <div id="no-show">don't show me</div>
 
-      <input v-model="pinCoordinatesY" />
-      <input name="pinCoordinates" v-model="pinCoordinatesX" />
+        <input v-model="pinCoordinatesY" />
+        <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-      <textarea
-        v-model="pinDescription"
-        placeholder="Beskrvning"
-        rows="10"
-        name="userName"
-        id="user-name"
-      />
-      <div>
-        <input type="button" value="Post!" @click="postPin()" />
-        <input type="button" value="Delete!" @click="deletePin()" />
+        <textarea
+          v-model="pinDescription"
+          placeholder="Beskrvning"
+          rows="10"
+          name="userName"
+          id="user-name"
+        />
+        <div>
+          <input type="button" value="Post!" @click="postPin()" />
+          <input type="button" value="Back" @click="changePinBool()" />
+        </div>
       </div>
     </div>
+    <input type="button" value="Front" @click="changePinBool()" />
   </div>
 </template>
 <script>
@@ -58,6 +73,9 @@ export default {
     },
     deletePin() {
       this.$store.dispatch("deletePin");
+    },
+    changePinBool() {
+      this.$store.dispatch("changePinBool");
     },
     print() {
       console.log(this.$store.state.pinTags);

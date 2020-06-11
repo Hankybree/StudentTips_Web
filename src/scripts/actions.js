@@ -36,14 +36,18 @@ export const actions = {
         context.commit('setPinBool', false)
         console.log(context.state.pinBool)
 
-
-        fetch('http://116.203.125.0:12001/pins', {
-            body: formData,
-            method: 'POST'
-        }).then(response => response)
-            .then(result => {
-                console.log(result)
-            })
+        if (formData.get('pinTitle') !== ("")) {
+            fetch('http://116.203.125.0:12001/pins', {
+                body: formData,
+                method: 'POST'
+            }).then(response => response)
+                .then(result => {
+                    console.log(result)
+                })
+        } else {
+            console.log("did not send")
+            context.commit('setPinBool', true)
+        }
     },
     patchPin(context) {
 
@@ -75,5 +79,13 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
+    },
+    changePinBool(context) {
+        if (context.state.pinBool === true) {
+            context.commit('setPinBool', false)
+        } else if (context.state.pinBool === false) {
+            context.commit('setPinBool', true)
+        }
     }
+
 }
