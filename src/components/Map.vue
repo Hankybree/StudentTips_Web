@@ -103,7 +103,9 @@ export default {
       });
       if (point.length) {
         var clickedPoint = point[0];
-
+        store.commit("setPinInt", 2);
+        console.log(store.state.pinInt);
+        console.log(clickedPoint.properties.title);
         store.commit("setPinTags", clickedPoint.properties.tag);
         store.commit("setPinTitle", clickedPoint.properties.title);
         store.commit(

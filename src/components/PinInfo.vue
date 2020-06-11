@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div v-if="pinInt === 2" class="GetPin">
+      <div id="box">
+        <h2>{{$store.state.pinTitle}}</h2>
+        <p>{{$store.state.pinDescription}}</p>
+      </div>
+    </div>
     <div v-if="pinInt === 1" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
@@ -86,6 +92,14 @@ export default {
 
 
 <style scoped>
+.GetPin {
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+}
+#box {
+  border: 8px solid cornflowerblue;
+}
 .PinInfo {
   display: flex;
   flex-direction: column;
