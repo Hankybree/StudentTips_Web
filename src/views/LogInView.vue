@@ -6,7 +6,7 @@
       <!--Login-->
       <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
       <br />
-      <input placeholder="Password" type="text" name="passWord" id="passWord" v-model="passWord" />
+      <input placeholder="Password" type="password" name="passWord" id="passWord" v-model="userPassword"/>
       <br />
       <input type="button" value="Login" id="loginbtn" @click="logIn()" />
       <br />
@@ -15,29 +15,18 @@
   </div>
 </template>
 <script>
+import { computed } from "../scripts/computed";
+
 export default {
   name: "login",
   methods: {
     logIn() {
-      fetch("http://localhost:12001/login")
-        .then(response => response.json())
-        .then(result => {
-          for (let i = 0; i <= result.length; i++) {
-            if (this.userName === result[i].userName) {
-              if (this.passWord === result[i].userPassword) {
-                console.log("you are logged in");
-              }
-            }
-          }
-        });
+      this.$store.dispatch("getUser");
+      this.$store.commit("setUserName", "");
+      this.$store.commit("setUserPassword", "");
     }
   },
-  data() {
-    return {
-      userName: "",
-      passWord: ""
-    };
-  }
+  computed: computed
 };
 </script>
 <style scoped>

@@ -1,5 +1,4 @@
-const { v4: uuidv4 } = require("uuid")
-var uniqeId = uuidv4
+
 
 export const actions = {
 
@@ -100,6 +99,24 @@ export const actions = {
         }).then(response => response)
             .then(result => {
                 console.log(result)
+            })
+    },
+    getUser(context) {
+        fetch('http://116.203.125.0:12001/login', {
+            body: JSON.stringify({
+                userName: context.state.userName,
+                userPassword: context.state.userPassword
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result.status)
+                if (result.status === 1 || result.status === 3) {
+                    window.location.replace("http://localhost:8081/#/map")
+                }
             })
     },
 }
