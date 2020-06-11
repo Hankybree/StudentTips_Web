@@ -1,4 +1,4 @@
-import { Store } from "vuex"
+
 
 export const computed = {
 
@@ -77,7 +77,7 @@ export const computed = {
         set(newUserName) {
             this.$store.commit('setUserName', newUserName)
         }
-    }, 
+    },
     userPassword: {
         get() {
             return this.$store.state.userPassword
@@ -92,7 +92,15 @@ export const computed = {
         },
         set(newUserEmail) {
             this.$store.commit('setUserEmail', newUserEmail)
+        },
+        pinBool: {
+            get() {
+                return this.$store.state.pinBool
+            },
+            set(newPinBool) {
+                this.$store.commit('setPinBool', newPinBool)
+            }
         }
-    }
 
+    }
 }

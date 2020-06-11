@@ -33,6 +33,9 @@ export const actions = {
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
+        context.commit('setPinBool', false)
+        console.log(context.state.pinBool)
+
 
         fetch('http://116.203.125.0:12001/pins', {
             body: formData,
@@ -56,7 +59,7 @@ export const actions = {
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
-    
+
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             body: formData,
             method: 'PATCH'
@@ -83,7 +86,7 @@ export const actions = {
         formData.append('userPassword', context.state.userPassword)
         formData.append('userEmail', context.state.userEmail)
 
-        fetch('http://116.203.125.0:12001/users', {
+        fetch('http://116.203.125.0:12001/signup', {
             body: formData,
             method: 'POST'
         }).then(response => response)

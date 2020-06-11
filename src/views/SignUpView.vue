@@ -25,7 +25,6 @@ import { computed } from "../scripts/computed.js" // should we import this?
 
 export default {
   name: "SignUpView",
-  components: null,//no components needed, right?
   computed: computed, 
   methods: {
     //methods for user data handling
