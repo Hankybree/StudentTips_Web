@@ -75,5 +75,29 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
-    }
+    },
+
+    //actions for user data
+    postUser(context) {
+
+        let formData = new FormData()//formData holds and transfers the data from a form to a backend server
+
+        formData.append('userName', context.state.userName)
+        formData.append('userPassword', context.state.userPassword)
+        formData.append('userEmail', context.state.userEmail)
+
+        fetch('http://116.203.125.0:12001/signup', {
+            body: formData,
+            method: 'POST'
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result)
+                if (result.status === 2) {
+                    console.log(result.status)
+                    alert("User name taken!")
+                } else {
+                    window.location.replace("http://localhost:8080/#/")
+                }
+            })
+    },
 }
