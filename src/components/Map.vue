@@ -25,15 +25,24 @@ export default {
         bearing: -10,
         interactive: true,
         attributionControl: false,
+
         style: "mapbox://styles/samieh/ckans78oz3ehp1illrbn63u6i"
       });
     }
   },
   mounted() {
     let map = this.map();
-
-    map.addControl(new mapboxgl.NavigationControl());
     var features = [];
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      })
+    );
+
     fetch("http://116.203.125.0:12001/pins")
       .then(response => response.json())
       .then(result => {
@@ -47,36 +56,45 @@ export default {
             properties: {
               pinId: p.pinId,
               title: p.pinTitle,
-              tag: [p.pinTags],
+              tag: p.pinTags,
+              //image: p.pinImage,
               icon: "bar",
+
               Description: p.pinDescription
             }
           });
         });
       });
-    map.on("load", function() {
-      map.addSource("points", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: features
-        }
-      });
 
-      map.addLayer({
-        id: "points",
-        type: "symbol",
-        source: "points",
-        layout: {
-          // get the icon name from the source's "icon" property
-          // concatenate the name to get an icon from the style's sprite sheet
-          "icon-image": ["concat", ["get", "icon"], "-15"],
-          // get the title name from the source's "title" property
-          "text-field": ["get", "title"],
-          "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-          "text-offset": [0, 0.6],
-          "text-anchor": "top"
-        }
+    map.on("load", function() {
+      map.loadImage("https://i.ibb.co/C2GZ9P2/pin.png", function(error, image) {
+        //this is where we load the image file
+        if (error) throw error;
+        map.addImage("custom-marker", image);
+        map.addSource("points", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: features
+          }
+        });
+
+        map.addLayer({
+          id: "points",
+          type: "symbol",
+          source: "points",
+          layout: {
+            "icon-image": "custom-marker",
+            "icon-allow-overlap": false,
+            "icon-size": 0.5,
+            // ["concat", ["get", "icon"], "-15"],
+            // get the title name from the source's "title" property
+            "text-field": ["get", "title"],
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+          }
+        });
       });
     });
     map.on("click", function(e) {
@@ -85,10 +103,21 @@ export default {
       });
       if (point.length) {
         var clickedPoint = point[0];
-        //console.log(clickedPoint.properties.pinId)
-        var desc = clickedPoint.properties.Description;
 
-        // var tag=clickedPoint.properties.tag
+        store.commit("setPinTags", clickedPoint.properties.tag);
+        store.commit("setPinTitle", clickedPoint.properties.title);
+        store.commit(
+          "setPinCoordinatesX",
+          clickedPoint.geometry.coordinates[0]
+        );
+
+        store.commit(
+          "setPinCoordinatesY",
+          clickedPoint.geometry.coordinates[1]
+        );
+        var desc = clickedPoint.properties.Description;
+        store.commit("setPinDescription", desc);
+
         map.flyTo({
           center: clickedPoint.geometry.coordinates,
           zoom: 15
@@ -100,12 +129,14 @@ export default {
       } else {
         console.log(this.$store);
         var p = e.lngLat;
-
+        store.commit("setPinTitle", "");
+        store.commit("setPinDescription", "");
+        store.commit("setPinTags", "");
+        //store.commit("setPinImage", p.image)
         store.commit("setPinCoordinatesX", p.lng);
-
         store.commit("setPinCoordinatesY", p.lat);
+        store.commit("setPinBool", true);
 
-        store.state.pinBool = true;
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])
         //       .addTo(map);

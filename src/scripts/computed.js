@@ -1,5 +1,8 @@
+
+
 export const computed = {
 
+    //computed properties for pins
     pinId: {
         get() {
             return this.$store.state.pinId
@@ -64,23 +67,32 @@ export const computed = {
             this.$store.commit('setPinUser', newUser)
         }
     },
+
+
+    //computed properties for users
     userName: {
         get() {
             return this.$store.state.userName
         },
-        set(newUser) {
-            this.$store.commit('setUserName', newUser)
+        set(newUserName) {
+            this.$store.commit('setUserName', newUserName)
         }
-
     },
-    password: {
+    userPassword: {
         get() {
-            return this.$store.state.password
+            return this.$store.state.userPassword
         },
-        set(userPassword) {
-            this.$store.commit('setPassword', userPassword)
+        set(newUserPassword) {
+            this.$store.commit('setUserPassword', newUserPassword)
+        }
+    },
+    userEmail: {
+        get() {
+            return this.$store.state.userEmail
         },
-
+        set(newUserEmail) {
+            this.$store.commit('setUserEmail', newUserEmail)
+        },
         pinBool: {
             get() {
                 return this.$store.state.pinBool
@@ -89,5 +101,6 @@ export const computed = {
                 this.$store.commit('setPinBool', newPinBool)
             }
         }
+
     }
 }

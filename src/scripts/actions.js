@@ -84,31 +84,22 @@ export const actions = {
                 console.log(result)
             })
     },
-    postUser(context) {
-        fetch('http://localhost:12001/users', {
-            body: JSON.stringify({
-                userId: uniqeId,
-                userName: context.state.userName,
-                userPassword: context.state.passWord,
-                //userEmail: context.state.Email,
-                // userAdmin: context.state.pinTitle,
-                // userImage: context.state.pinTitle,
-                // userDescription: context.state.pinTitle,
-                // userTags: context.state.pinTitle,
-                // userPins: context.state.pinTitle
 
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
+    //actions for user data
+    postUser(context) {
+
+        let formData = new FormData()//formData holds and transfers the data from a form to a backend server
+
+        formData.append('userName', context.state.userName)
+        formData.append('userPassword', context.state.userPassword)
+        formData.append('userEmail', context.state.userEmail)
+
+        fetch('http://116.203.125.0:12001/signup', {
+            body: formData,
             method: 'POST'
         }).then(response => response)
             .then(result => {
                 console.log(result)
             })
-        context.commit('setUserName', "Marcus")
-        context.commit('setPassword', "hejehj")
-        //context.commit('setEmail', 0)
-
     },
 }

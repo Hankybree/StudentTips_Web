@@ -4,29 +4,38 @@
     <img alt="Vue logo" src="../assets/logo3.png" />
     <div id="signUpScreen">
       <!--SignUp-->
-      <input placeholder="Username" type="text" name="userName" id="userName" />
+
+
+      <!-- added v-model and onClick function -->
+      <input placeholder="Username" type="text" name="userName" v-model="userName" id="userName" />
       <br />
-      <input placeholder="Password" type="text" name="passWord" id="passWord" />
+      <input placeholder="Password" type="text" name="userPassword" v-model="userPassword" id="passWord" />
       <br />
-      <input placeholder="Email" type="text" name="Email" id="Email" />
+      <input placeholder="Email" type="text" name="userEmail" v-model="userEmail" id="Email" />
       <br />
-      <input @click="postUser()" type="button" value="Register" id="registerBtn" />
+      <input type="button" value="Register" id="registerBtn" @click="postUser()"/>
       <br />
       <router-link to="/">Back to login?</router-link>
     </div>
   </div>
 </template>
 <script>
-import { computed } from "../scripts/computed.js";
+
+import { computed } from "../scripts/computed.js" // should we import this?
+
 export default {
-  name: "Signup",
-  computed: computed,
+  name: "SignUpView",
+  computed: computed, 
   methods: {
+    //methods for user data handling
     postUser() {
-      this.$store.dispatch("postUser");
+      this.$store.dispatch("postUser")
+      this.$store.commit('setUserName', "")
+      this.$store.commit('setUserPassword', "")
+      this.$store.commit('setUserEmail', "")
     }
   }
-};
+}
 </script>
 <style scoped>
 #signUpScreen {
