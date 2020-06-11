@@ -35,7 +35,8 @@ export const store = new Vuex.Store({
     userName: "",
     userPassword: "",
     userEmail: "",
-    pinBool: false
+    pinBool: false,
+    loggedIn: false
   },
   mutations: {
 
@@ -77,6 +78,9 @@ export const store = new Vuex.Store({
     },
     setPinBool(state, newPinBool) {
       state.pinBool = newPinBool
+    },
+    setLoggedIn(state, newLoggedIn) {
+      state.loggedIn = newLoggedIn
     }
   },
   actions: actions

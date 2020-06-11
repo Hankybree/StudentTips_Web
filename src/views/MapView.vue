@@ -3,6 +3,7 @@
     <PinInfo></PinInfo>
     <div id="map">
       <Map></Map>
+      <router-link to="/" SignUp>Home</router-link>
       <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
@@ -84,6 +85,7 @@ export default {
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
+      window.location.reload
     },
     patchPin() {
       this.$store.dispatch("patchPin");

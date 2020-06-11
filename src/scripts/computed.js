@@ -75,6 +75,14 @@ export const computed = {
             this.$store.commit('setPinBool', newPinBool)
         }
     },
+    loggedIn: {
+        get() {
+            return this.$store.state.loggedIn
+        },
+        set(newLoggedIn) {
+            this.$store.commit('setLoggedIn', newLoggedIn)
+        }
+    },
 
 
     //computed properties for users
