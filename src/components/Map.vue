@@ -127,7 +127,6 @@ export default {
           .setHTML(desc)
           .addTo(map);
       } else {
-        console.log(this.$store);
         var p = e.lngLat;
         store.commit("setPinTitle", "");
         store.commit("setPinDescription", "");
@@ -135,7 +134,7 @@ export default {
         //store.commit("setPinImage", p.image)
         store.commit("setPinCoordinatesX", p.lng);
         store.commit("setPinCoordinatesY", p.lat);
-        store.commit("setPinBool", true);
+        store.commit("setPinInt", 1);
 
         //  new mapboxgl.Marker()
         //       .setLngLat([p.lng, p.lat])

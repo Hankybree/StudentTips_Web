@@ -1,30 +1,44 @@
 <template>
-  <div v-if="pinBool" class="PinInfo">
-    <div id="img-container">
-      <img src alt="Här finns ingen bild bild" />
-    </div>
-    <h2>Title Goes Here</h2>
-    <div id="post-container">
-      <input name="pinImage" id="pin-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
+  <div>
+    <div v-if="pinInt === 1" class="PinInfo">
+      <div id="img-container">
+        <img src alt="Här finns ingen bild bild" />
+      </div>
+      <h2>Title Goes Here</h2>
+      <div id="post-container">
+        <input
+          name="pinImage"
+          id="pin-image"
+          type="file"
+          accept="image/x-png, image/gif, image/jpeg"
+        />
 
-      <div id="no-show">d</div>
+        <div id="no-show">d</div>
 
-      <input v-model="pinTitle" placeholder="Titel" type="text" name="userName" id="user-name" />
-      <div id="no-show">don't show me</div>
+        <input
+          v-model="pinTitle"
+          placeholder="Titel"
+          type="text"
+          name="userName"
+          id="user-name"
+          required
+        />
+        <div id="no-show">don't show me</div>
 
-      <input v-model="pinCoordinatesY" />
-      <input name="pinCoordinates" v-model="pinCoordinatesX" />
+        <input v-model="pinCoordinatesY" />
+        <input name="pinCoordinates" v-model="pinCoordinatesX" />
 
-      <textarea
-        v-model="pinDescription"
-        placeholder="Beskrvning"
-        rows="10"
-        name="userName"
-        id="user-name"
-      />
-      <div>
-        <input type="button" value="Post!" @click="postPin()" />
-        <input type="button" value="Delete!" @click="deletePin()" />
+        <textarea
+          v-model="pinDescription"
+          placeholder="Beskrvning"
+          rows="10"
+          name="userName"
+          id="user-name"
+        />
+        <div>
+          <input type="button" value="Post!" @click="postPin()" />
+          <input type="button" value="Back" @click="changePinInt()" />
+        </div>
       </div>
     </div>
   </div>
@@ -53,13 +67,15 @@ export default {
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
-      this.$store.commit("setPinBool", false);
     },
     patchPin() {
       this.$store.dispatch("patchPin");
     },
     deletePin() {
       this.$store.dispatch("deletePin");
+    },
+    changePinInt() {
+      this.$store.dispatch("changePinInt");
     },
     print() {
       console.log(this.$store.state.pinTags);

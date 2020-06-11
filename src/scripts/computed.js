@@ -67,12 +67,12 @@ export const computed = {
             this.$store.commit('setPinUser', newUser)
         }
     },
-    pinBool: {
+    pinInt: {
         get() {
-            return this.$store.state.pinBool
+            return this.$store.state.pinInt
         },
-        set(newPinBool) {
-            this.$store.commit('setPinBool', newPinBool)
+        set(newPinInt) {
+            this.$store.commit('setPinInt', newPinInt)
         }
     },
     loggedIn: {
