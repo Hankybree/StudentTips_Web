@@ -1,3 +1,5 @@
+
+
 export const actions = {
 
     getPins() {
@@ -44,6 +46,11 @@ export const actions = {
             .then(result => {
                 console.log(result)
             })
+        context.commit('setPinTitle', "")
+        context.commit('setPinDescription', "")
+        context.commit('setPinCoordinatesX', 0)
+        context.commit('setPinCoordinatesY', 0)
+        context.commit('setPinTags', [])
     },
     patchPin(context) {
 
@@ -97,6 +104,24 @@ export const actions = {
                     alert("User name taken!")
                 } else {
                     window.location.replace("http://localhost:8080/#/")
+                }
+            })
+    },
+    getUser(context) {
+        fetch('http://116.203.125.0:12001/login', {
+            body: JSON.stringify({
+                userName: context.state.userName,
+                userPassword: context.state.userPassword
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json())
+            .then(result => {
+                console.log(result.status)
+                if (result.status === 1 || result.status === 3) {
+                    window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
