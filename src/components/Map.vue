@@ -25,15 +25,24 @@ export default {
         bearing: -10,
         interactive: true,
         attributionControl: false,
+
         style: "mapbox://styles/samieh/ckans78oz3ehp1illrbn63u6i"
       });
     }
   },
   mounted() {
     let map = this.map();
-
-    map.addControl(new mapboxgl.NavigationControl());
     var features = [];
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      })
+    );
+
     fetch("http://116.203.125.0:12001/pins")
       .then(response => response.json())
       .then(result => {
@@ -56,6 +65,7 @@ export default {
           });
         });
       });
+
     map.on("load", function() {
       map.loadImage("https://i.ibb.co/C2GZ9P2/pin.png", function(error, image) {
         //this is where we load the image file
