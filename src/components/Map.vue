@@ -33,7 +33,7 @@ export default {
   mounted() {
     let map = this.map();
     var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
-     map.addControl(
+    map.addControl(
       new MapboxGeocoder({
 
         accessToken: mapboxgl.accessToken,
