@@ -96,6 +96,7 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: aquamarine;
+  min-width: 15vw;
 }
 #box {
   border: 8px solid cornflowerblue;

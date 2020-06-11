@@ -1,6 +1,5 @@
 <template>
   <div class="content">
-    <input type="button" value="show box!" @click="pinInt = 2" />
     <div id="map">
       <Map></Map>
       <router-link to="/" SignUp>Home</router-link>
