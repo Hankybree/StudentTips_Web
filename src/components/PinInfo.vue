@@ -1,11 +1,9 @@
 <template>
   <div>
     <div v-if="pinInt === 1" class="PinInfo">
-      <div id="img-container">
-        <img src alt="Här finns ingen bild bild" />
-      </div>
-      <h2>Title Goes Here</h2>
       <div id="post-container">
+        <h2>Please create your tip</h2>
+
         <input
           name="pinImage"
           id="pin-image"
@@ -24,20 +22,22 @@
           required
         />
         <div id="no-show">don't show me</div>
-
-        <input v-model="pinCoordinatesY" />
-        <input name="pinCoordinates" v-model="pinCoordinatesX" />
+        <div>
+          <input v-model="pinCoordinatesY" />
+          <br />
+          <input name="pinCoordinates" v-model="pinCoordinatesX" />
+        </div>
 
         <textarea
+          id="textarea"
           v-model="pinDescription"
           placeholder="Beskrvning"
           rows="10"
-          name="userName"
-          id="user-name"
+          name="pinDescription"
         />
         <div>
-          <input type="button" value="Post!" @click="postPin()" />
-          <input type="button" value="Back" @click="changePinInt()" />
+          <input id="input" type="button" value="Post!" @click="postPin()" />
+          <input id="input" type="button" value="Back" @click="changePinInt()" />
         </div>
       </div>
     </div>
@@ -89,27 +89,12 @@ export default {
 .PinInfo {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  flex-wrap: flex;
   background-color: white;
-  width: 15vw;
-  height: 75vh;
   border-radius: 8px;
   border: solid 2px black;
 }
 
-.PinInfo > #img-container {
-  border-radius: 8px;
-  background-color: yellow;
-  height: 130px;
-  width: 216px;
-}
-#post-container {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-}
-.PinInfo > div > img {
+/*.PinInfo > div > img {
   object-fit: cover;
   object-position: -50% 0;
 
@@ -118,26 +103,20 @@ export default {
 
   box-shadow: 0px 5px 3px 0px black;
   border-radius: 8px;
-}
-.PinInfo > ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  list-style-type: none;
-}
+}*/
 #no-show {
   visibility: hidden;
 }
 
-textarea {
+#textarea {
   background-color: #fcbf49;
   font-family: Raleway;
   font-size: 12pt;
   color: black;
-  position: relative;
 }
-input[type="button"] {
+#input[type="button"] {
   width: 50px;
   border-radius: 8px;
+  background-color: #fcbf49;
 }
 </style>
