@@ -4,7 +4,7 @@
     <img alt="Vue logo" src="../assets/logo3.png" />
     
     <!-- div showing if NOT logged in -->
-    <div v-if="loggedIn" class="loginScreen">
+    <div v-if="!loggedIn" class="loginScreen">
       <!--Login-->
       <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
       <br />
@@ -16,7 +16,7 @@
     </div>
     
     <!-- div showing if logged in -->
-    <div v-if="!loggedIn" class="loginScreen">
+    <div v-if="loggedIn" class="loginScreen">
       <!-- Visa profiluppgifter
       visa profilbild
       Logga ut-alternativ -->

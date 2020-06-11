@@ -2,6 +2,7 @@
   <div id="app">
     <header id="head">
       <p id="header-text">Tip Top</p>
+      <input type="button" value="Logout" id="loginbtn" @click="logout()" v-if="!loggedIn" />
       <router-link to="/map">Map</router-link>
     </header>
     <router-view></router-view>
@@ -13,8 +14,14 @@
 
 <script>
 export default {
-  name: "App"
-}
+  name: "App",
+  methods: {
+    logout() {
+      sessionStorage.clear()
+      window.location.replace('http://localhost:8080/#/login')
+    }
+  }
+};
 </script>
 
 <style>
