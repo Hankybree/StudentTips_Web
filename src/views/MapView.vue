@@ -1,12 +1,12 @@
 <template>
   <div class="content">
+    <PinInfo></PinInfo>
     <div id="map">
       <Map></Map>
       <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
       dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
 
-    <PinInfo></PinInfo>
 
     <!--<div class="pin-post-container">
       <div id="get-info">
