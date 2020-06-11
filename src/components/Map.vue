@@ -33,8 +33,17 @@ export default {
   },
   mounted() {
     let map = this.map();
+    var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
+     map.addControl(
+      new MapboxGeocoder({
 
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+      })
+    );
     map.addControl(new mapboxgl.NavigationControl());
+    
+   
     var features = [];
     fetch("http://116.203.125.0:12001/pins")
       .then(response => response.json())
@@ -136,4 +145,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css");
 </style>
