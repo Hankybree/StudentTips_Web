@@ -2,7 +2,7 @@
   <div id="app">
     <header id="head">
       <p id="header-text">Tip Top</p>
-      <input type="button" value="Logout" id="loginbtn" @click="logout()" v-if="!loggedIn" />
+      <input type="button" value="Logout" id="signOutbtn" @click="logout()" v-if="!loggedIn" />
       <router-link to="/map">Map</router-link>
     </header>
     <router-view></router-view>
@@ -17,8 +17,8 @@ export default {
   name: "App",
   methods: {
     logout() {
-      sessionStorage.clear()
-      window.location.replace('http://localhost:8080/#/login')
+      localStorage.setItem("token", null);
+      window.location.replace("http://localhost:8080/#/");
     }
   }
 };
@@ -59,5 +59,10 @@ html {
   margin: 0;
   padding: 0;
   font-size: 27pt;
+}
+#signOutbtn {
+  position: absolute;
+  left: 95%;
+  top: 25px;
 }
 </style> 

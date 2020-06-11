@@ -5,17 +5,27 @@
     <div id="signUpScreen">
       <!--SignUp-->
 
-
       <!-- added v-model and onClick function -->
       <input placeholder="Username" type="text" name="userName" v-model="userName" id="userName" />
       <br />
-      <input placeholder="Password" type="password" name="userPassword" v-model="userPassword" id="passWord" />
+      <input
+        placeholder="Password"
+        type="password"
+        name="userPassword"
+        v-model="userPassword"
+        id="passWord"
+      />
       <br />
       <input placeholder="Email" type="text" name="userEmail" v-model="userEmail" id="Email" />
       <br />
-      <input name="userImage" id="user-image" type="file" accept="image/x-png, image/gif, image/jpeg" />
+      <input
+        name="userImage"
+        id="user-image"
+        type="file"
+        accept="image/x-png, image/gif, image/jpeg"
+      />
       <br />
-      <input type="button" value="Register" id="registerBtn" @click="postUser()"/>
+      <input type="button" value="Register" id="registerBtn" @click="postUser()" />
       <br />
       <router-link to="/">Cancel</router-link>
     </div>
@@ -24,22 +34,21 @@
 
 
 <script>
-import { computed } from "../scripts/computed.js"
+import { computed } from "../scripts/computed.js";
 
 export default {
   name: "SignUpView",
-  computed: computed, 
+  computed: computed,
   methods: {
     //methods for user data handling
     postUser() {
-      this.$store.dispatch("signup")
-      this.$store.commit('setUserName', "")
-      this.$store.commit('setUserPassword', "")
-      this.$store.commit('setUserEmail', "")
-      
+      this.$store.dispatch("signup");
+      this.$store.commit("setUserName", "");
+      this.$store.commit("setUserPassword", "");
+      this.$store.commit("setUserEmail", "");
     }
   }
-}
+};
 </script>
 
 
