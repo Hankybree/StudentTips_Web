@@ -36,7 +36,6 @@ export const store = new Vuex.Store({
     userName: "",
     userPassword: "",
     userEmail: "",
-    pinBool: false
   },
   mutations: {
 
