@@ -68,7 +68,7 @@ export default {
               pinId: p.pinId,
               title: p.pinTitle,
               tag: p.pinTags,
-              //image: p.pinImage,
+              image: p.pinImage,
               icon: "bar",
 
               Description: p.pinDescription
@@ -119,6 +119,7 @@ export default {
         console.log(clickedPoint.properties.title);
         store.commit("setPinTags", clickedPoint.properties.tag);
         store.commit("setPinTitle", clickedPoint.properties.title);
+        store.commit("setPinImage",clickedPoint.properties.image)
         store.commit(
           "setPinCoordinatesX",
           clickedPoint.geometry.coordinates[0]

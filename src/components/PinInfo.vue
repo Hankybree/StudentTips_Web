@@ -5,6 +5,9 @@
         <h2>{{$store.state.pinTitle}}</h2>
         <p>{{$store.state.pinDescription}}</p>
       </div>
+      <div id="box">
+        <img v-bind:src="pinImage" id="image">
+      </div>
     </div>
     <div v-if="pinInt === 1" class="PinInfo">
       <div id="post-container">
@@ -101,6 +104,10 @@ export default {
 #box {
   border: 8px solid cornflowerblue;
 }
+#image{
+  width: 100px;
+  height: 100px;
+};
 .PinInfo {
   display: flex;
   flex-direction: column;
