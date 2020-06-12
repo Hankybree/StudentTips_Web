@@ -16,9 +16,8 @@
 export default {
   name: "App",
   methods: {
-    logout() {
-      localStorage.setItem("token", null);
-      window.location.replace("http://localhost:8080/#/");
+    logout(){
+    this.$store.dispatch("logout");
     }
   }
 };

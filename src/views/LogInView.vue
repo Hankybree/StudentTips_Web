@@ -42,7 +42,6 @@ export default {
       this.$store.dispatch("login");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
-      window.location.replace("http://localhost:8080/#/map");
     }
   },
   computed: computed
