@@ -125,7 +125,7 @@ export const actions = {
 
                 localStorage.setItem('token', result.token)
 
-                console.log(result.status)
+                console.log(result)
                 if (result.status === 1 || result.status === 3) {
                     window.location.replace("http://localhost:8080/#/map")
                 }
@@ -139,10 +139,10 @@ export const actions = {
                 'Token' : localStorage.getItem('token')
             },
             method: 'DELETE'
-        }).then(response => response)
+        }).then(response => response.json())
             .then(result => {
                 localStorage.setItem('token',null)
-                console.log(localStorage.getItem('token'))
+                console.log(result)
             })
             
         window.location.replace("http://localhost:8080/#/");
