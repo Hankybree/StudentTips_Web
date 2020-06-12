@@ -131,6 +131,22 @@ export const actions = {
                 }
             })
     },
+    logout() {
+        console.log(localStorage.getItem("token"));
+        fetch('http://116.203.125.0:12001/logout', {
+
+            headers: {
+                'Token' : localStorage.getItem('token')
+            },
+            method: 'DELETE'
+        }).then(response => response)
+            .then(result => {
+                localStorage.setItem('token',null)
+                console.log(localStorage.getItem('token'))
+            })
+            
+        window.location.replace("http://localhost:8080/#/");
+    },
     changePinInt(context) {
         if (context.state.pinInt != 0) {
             context.state.pinInt = 0
