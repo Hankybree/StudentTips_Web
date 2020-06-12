@@ -35,7 +35,7 @@ export const actions = {
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
-        context.commit('setPinBool', false)
+        context.commit('setPinInt', 0)
         console.log(context.state.pinBool)
 
 
@@ -131,4 +131,9 @@ export const actions = {
                 }
             })
     },
+    changePinInt(context) {
+        if (context.state.pinInt != 0) {
+            context.state.pinInt = 0
+        }
+    }
 }

@@ -1,61 +1,10 @@
 <template>
   <div class="content">
-    <PinInfo></PinInfo>
     <div id="map">
       <Map></Map>
       <router-link to="/" SignUp>Home</router-link>
-      <!--Här skall kartan/kartviwn inplementeras, man skulle ochskå kunna ha lite eventulla knappar för olika inställningar,
-      dock är det nog en sak som kommer med mapbox om jag inte minns fel-->
     </div>
-
-
-    <!--<div class="pin-post-container">
-      <div id="get-info">
-        <input type="button" value="Get pins" @click="getPins()" />
-        <input type="button" value="Get single pin" @click="getSinglePin()" />
-    </div>-->
-    <!--<div id="post-form">
-         <form action="http://localhost:12001/pins" method="post" enctype="multipart/form-data"> 
-        <p>Post</p>
-        <input name="pinTitle" v-model="pinTitle" placeholder="Title" />
-
-        <input name="pinDescription" v-model="pinDescription" placeholder="Description" />
-
-        <input
-          name="pinImage"
-          type="file"
-          id="pin-image"
-          accept="image/x-png, image/gif, image/jpeg"
-        />
-
-        <input name="pinUser" v-model="pinUser" /> 
-
-        <input v-model="pinCoordinatesY" />
-        <input name="pinCoordinates" v-model="pinCoordinatesX" />
-
-         <input name="avatar" type="file" /> 
-         <input type="submit" value="Upload image" /> 
-         </form> 
-        <div id="post-tags">
-          <input v-model="pinTags" type="checkbox" value="mat" /> Mat
-          <input v-model="pinTags" type="checkbox" value="bok" /> Bok
-          <input v-model="pinTags" type="checkbox" value="öl" /> Öl
-        </div>
-        <div id="post-patch-buttons">
-          <input type="button" value="Post pin" @click="postPin()" />
-          <input v-model="pinId" />
-          <input type="button" value="Patch pin" @click="patchPin()" />
-          <input type="button" value="Patch pin" @click="patchPin()" />
-        </div> 
-      </div>
-
-      <div id="patch"></div>
-      <div id="delete">
-        <input v-model="pinId" />
-        <input type="button" value="Delete pin" @click="deletePin()" />
-      </div>
-      <input type="button" value="Print" @click="print()" />
-    </div>-->
+    <PinInfo></PinInfo>
   </div>
 </template>
 
