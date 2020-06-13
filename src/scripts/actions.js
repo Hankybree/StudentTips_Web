@@ -72,6 +72,9 @@ export const actions = {
 
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             body: formData,
+            headers: {
+                'Token' : localStorage.getItem('token')
+            },
             method: 'PATCH'
         }).then(response => response)
             .then(result => {
@@ -80,6 +83,9 @@ export const actions = {
     },
     deletePin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
+            headers: {
+                'Token' : localStorage.getItem('token')
+            },
             method: 'DELETE'
         }).then(response => response)
             .then(result => {
