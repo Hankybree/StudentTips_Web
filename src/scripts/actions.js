@@ -135,5 +135,8 @@ export const actions = {
         if (context.state.pinInt != 0) {
             context.state.pinInt = 0
         }
+    },
+    addTags(context) {
+        context.state.pinTags.append(context.state.pinTag)
     }
 }

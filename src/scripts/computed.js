@@ -35,6 +35,14 @@ export const computed = {
             this.$store.commit('setPinImage', newImage)
         }
     },
+    pinTag: {
+        get() {
+            return this.$store.state.pinTag
+        },
+        set(newTag) {
+            this.$store.commit('setPinTag', newTag)
+        }
+    },
     pinTags: {
         get() {
             return this.$store.state.pinTags

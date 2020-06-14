@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App.vue'
 
+import VueTagsInput from "@johmun/vue-tags-input";
 import 'typeface-raleway'
 import { actions } from './scripts/actions.js'
 
@@ -30,12 +31,13 @@ export const store = new Vuex.Store({
     pinDescription: "",
     pinImage: "",
     pinTags: [],
+    pinTag: "",
     pinCoordinates: { x: 0, y: 0 },
     pinUser: 1,
+    pinInt: 0,
     userName: "",
     userPassword: "",
     userEmail: "",
-    pinInt: 0,
     loggedIn: false
   },
   mutations: {
@@ -52,6 +54,9 @@ export const store = new Vuex.Store({
     },
     setPinImage(state, newImage) {
       state.pinImage = newImage
+    },
+    setPinTag(state, newTag) {
+      state.pinTag = newTag
     },
     setPinTags(state, newTags) {
       state.pinTags = newTags
@@ -83,7 +88,8 @@ export const store = new Vuex.Store({
       state.loggedIn = newLoggedIn
     }
   },
-  actions: actions
+  actions: actions,
+  VueTagsInput: VueTagsInput
 })
 
 Vue.config.productionTip = false

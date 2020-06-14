@@ -19,6 +19,14 @@
 
         <div id="no-show">d</div>
 
+        <div>
+          <vue-tags-input
+            v-model="pinTag"
+            :tags="pinTags"
+            @tags-changed="newTags => pinTags = newTags"
+          />
+        </div>
+
         <input
           v-model="pinTitle"
           placeholder="Titel"
@@ -27,6 +35,7 @@
           id="user-name"
           required
         />
+
         <div id="no-show">don't show me</div>
         <div>
           <input v-model="pinCoordinatesY" />
@@ -53,11 +62,12 @@
 
 <script>
 import { computed } from "../scripts/computed.js";
+import VueTagsInput from "@johmun/vue-tags-input";
 //import { store } from "../main.js";
 
 export default {
   name: "PinInfo",
-
+  components: VueTagsInput,
   computed: computed,
   methods: {
     getPins() {
@@ -72,6 +82,7 @@ export default {
       this.$store.commit("setPinDescription", "");
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
+      this.$store.commit("setPinTag", "");
       this.$store.commit("setPinTags", []);
     },
     patchPin() {
