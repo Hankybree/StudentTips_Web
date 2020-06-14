@@ -136,15 +136,15 @@ export const actions = {
         fetch('http://116.203.125.0:12001/logout', {
 
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'DELETE'
         }).then(response => response)
             .then(result => {
-                localStorage.setItem('token',null)
+                localStorage.setItem('token', null)
                 console.log(localStorage.getItem('token'))
             })
-            
+
         window.location.replace("http://localhost:8080/#/");
     },
     changePinInt(context) {
