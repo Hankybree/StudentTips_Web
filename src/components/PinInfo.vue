@@ -5,15 +5,15 @@
         <img v-bind:src="pinImage" />
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
-          <input type="button" value="Update">
-          <input type="button" value="Delete">
+          <input type="button" value="Update" @click="$store.commit('setPinInt', 3)">
+          <input type="button" value="Delete" @click="deletePin()">
         </div>
       </div>
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
     </div>
-    <div v-if="pinInt === 1" class="PinInfo">
+    <div v-if="pinInt === 1 || pinInt === 3" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
 
@@ -49,7 +49,12 @@
           name="pinDescription"
         />
         <div>
-          <input id="input" type="button" value="Post!" @click="postPin()" />
+          <div v-if="pinInt === 1">
+            <input id="input" type="button" value="Post!" @click="postPin()" />
+          </div>
+          <div v-else>
+            <input id="input" type="button" value="Save changes" @click="patchPin()" />
+          </div>
           <input id="input" type="button" value="Back" @click="changePinInt()" />
         </div>
       </div>
@@ -86,6 +91,7 @@ export default {
       window.location.reload
     },
     patchPin() {
+      console.log('pressed patch')
       this.$store.dispatch("patchPin");
     },
     deletePin() {
@@ -95,7 +101,7 @@ export default {
       this.$store.dispatch("changePinInt");
     },
     print() {
-      console.log(this.$store.state.pinTags);
+      console.log('pressed');
     }
   }
 };

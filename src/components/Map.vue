@@ -127,6 +127,7 @@ export default {
           clickedPoint.geometry.coordinates[0]
         )
         store.commit('setPinCreator', clickedPoint.properties.user)
+        store.commit('setPinId', clickedPoint.properties.pinId)
 
         store.commit(
           "setPinCoordinatesY",
