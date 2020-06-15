@@ -101,11 +101,18 @@ export default {
   background-color: #fcbf49;
   border-radius: 8px;
   min-width: 15vw;
+  max-width: 25vh;
   min-height: 71vh;
 }
 #box {
   border: 6px solid #f77f00;
   border-radius: 8px;
+}
+p {
+  word-break: break-all;
+}
+h2 {
+  word-break: break-all;
 }
 
 .PinInfo {
