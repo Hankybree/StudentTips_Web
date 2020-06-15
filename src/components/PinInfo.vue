@@ -6,8 +6,8 @@
 
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
-          <input type="button" value="Update" @click="$store.commit('setPinInt', 3)">
-          <input type="button" value="Delete" @click="deletePin()">
+          <input type="button" value="Update" @click="$store.commit('setPinInt', 3)" />
+          <input type="button" value="Delete" @click="deletePin()" />
         </div>
       </div>
       <div id="box" style="min-height: 37vh;">
@@ -48,7 +48,6 @@
           placeholder="Beskrvning"
           rows="10"
           name="pinDescription"
-          
         />
         <div>
           <div v-if="pinInt === 1">
@@ -90,7 +89,7 @@ export default {
       window.location.reload;
     },
     patchPin() {
-      console.log('pressed patch')
+      console.log("pressed patch");
       this.$store.dispatch("patchPin");
     },
     deletePin() {
@@ -100,7 +99,7 @@ export default {
       this.$store.dispatch("changePinInt");
     },
     print() {
-      console.log('pressed');
+      console.log("pressed");
     }
   }
 };
@@ -116,16 +115,14 @@ export default {
   min-width: 15vw;
   max-width: 25vh;
   min-height: 71vh;
- max-width: 200px;
- overflow-wrap: break-word; 
- word-wrap: break-word;
- word-break: break-all;
-  
+  max-width: 200px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 #box {
   border: 6px solid #f77f00;
   border-radius: 8px;
-  
 }
 p {
   word-break: break-all;
