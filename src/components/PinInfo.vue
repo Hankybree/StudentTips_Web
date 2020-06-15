@@ -2,8 +2,12 @@
   <div>
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
-        <img :src="$store.state.pinImage" />
-
+        <div v-if="$store.state.pinImage !== 'null'">
+          <img :src="$store.state.pinImage" />
+        </div>
+        <div v-else>
+          <img src="../assets/logo3.png" alt="Logo">
+        </div>
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
           <input type="button" value="Update" @click="$store.commit('setPinInt', 3)" />
@@ -13,6 +17,7 @@
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
+      <input type="button" value="Close" @click="changePinInt()" />
     </div>
     <div v-if="pinInt === 1 || pinInt === 3" class="PinInfo">
       <div id="post-container">
@@ -99,7 +104,7 @@ export default {
       this.$store.dispatch("changePinInt");
     },
     print() {
-      console.log("pressed");
+      console.log(this.$store.state.pinImage);
     }
   }
 };
@@ -139,7 +144,7 @@ h2 {
   border: solid 2px black;
 }
 
-#box > img {
+div > img {
   object-fit: cover;
   object-position: -40% 10;
 
