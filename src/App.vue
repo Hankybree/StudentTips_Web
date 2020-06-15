@@ -10,6 +10,7 @@
     </header>
     <router-view></router-view>
     <footer id="footer">
+      ©TipTop, All rights reserved
       <!--footer content, copywrite text?-->
     </footer>
   </div>
@@ -57,6 +58,7 @@ html {
   color: #2c3e50;
 }
 #footer {
+  color: white;
   position: absolute;
   bottom: 0px;
   height: 25px;
@@ -70,8 +72,6 @@ html {
 }
 #sign-out {
   display: flex;
-  position: absolute;
-  left: 90%;
-  top: 25px;
+  justify-content: end;
 }
 </style> 
