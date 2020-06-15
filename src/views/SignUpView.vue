@@ -42,7 +42,7 @@ export default {
   methods: {
     //methods for user data handling
     postUser() {
-      this.$store.dispatch("postUser");
+      this.$store.dispatch("signup");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
       this.$store.commit("setUserEmail", "");

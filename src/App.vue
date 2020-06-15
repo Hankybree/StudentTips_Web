@@ -2,6 +2,7 @@
   <div id="app">
     <header id="head">
       <p id="header-text">Tip Top</p>
+      <input type="button" value="Logout" id="signOutbtn" @click="logout()" v-if="!loggedIn" />
       <router-link to="/map">Map</router-link>
       <span>
       <router-link to="/" SignUp>Home</router-link>
@@ -16,8 +17,13 @@
 
 <script>
 export default {
-  name: "App"
-}
+  name: "App",
+  methods: {
+    logout(){
+    this.$store.dispatch("logout");
+    }
+  }
+};
 </script>
 
 <style>
@@ -55,5 +61,10 @@ html {
   margin: 0;
   padding: 0;
   font-size: 27pt;
+}
+#signOutbtn {
+  position: absolute;
+  left: 95%;
+  top: 25px;
 }
 </style> 

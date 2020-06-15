@@ -2,7 +2,10 @@
   <div>
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
+        <img v-bind:src="pinImage" />
         <h2>{{$store.state.pinTitle}}</h2>
+      </div>
+      <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
     </div>
@@ -99,12 +102,16 @@ export default {
 .GetPin {
   display: flex;
   flex-direction: column;
-  background-color: aquamarine;
+  background-color: #fcbf49;
+  border-radius: 8px;
   min-width: 15vw;
+  min-height: 71vh;
 }
 #box {
-  border: 8px solid cornflowerblue;
+  border: 6px solid #f77f00;
+  border-radius: 8px;
 }
+
 .PinInfo {
   display: flex;
   flex-direction: column;
@@ -113,16 +120,19 @@ export default {
   border: solid 2px black;
 }
 
-/*.PinInfo > div > img {
+#box > img {
   object-fit: cover;
-  object-position: -50% 0;
+  object-position: -40% 10;
+
+  max-width: 25vw;
+  max-height: 24vh;
 
   width: 100%;
   height: 100%;
 
   box-shadow: 0px 5px 3px 0px black;
   border-radius: 8px;
-}*/
+}
 #no-show {
   visibility: hidden;
 }
