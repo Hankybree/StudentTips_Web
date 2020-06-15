@@ -1,5 +1,3 @@
-
-
 export const actions = {
 
     getPins() {
@@ -48,16 +46,16 @@ export const actions = {
         }).then(response => response)
             .then(result => {
                 console.log(result)
+                context.dispatch('reloadWindow')
+                    .then(() => {
+                        context.commit('setCenter', context.state.pinCoordinates)
+                        context.commit('setPinTitle', "")
+                        context.commit('setPinDescription', "")
+                        context.commit('setPinCoordinatesX', 0)
+                        context.commit('setPinCoordinatesY', 0)
+                        context.commit('setPinTags', [])
+                    })
             })
-        context.commit('setPinTitle', "")
-        context.commit('setPinDescription', "")
-        context.commit('setPinCoordinatesX', 0)
-        context.commit('setPinCoordinatesY', 0)
-        context.commit('setPinTags', [])
-        
-        //testing
-        window.location.reload
-        context.commit('setCenter', context.state.pinCoordinates)
     },
     patchPin(context) {
 
@@ -77,7 +75,7 @@ export const actions = {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             body: formData,
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'PATCH'
         }).then(response => response)
@@ -88,7 +86,7 @@ export const actions = {
     deletePin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'DELETE'
         }).then(response => response)
@@ -105,6 +103,7 @@ export const actions = {
         formData.append('userName', context.state.userName)
         formData.append('userPassword', context.state.userPassword)
         formData.append('userEmail', context.state.userEmail)
+        formData.append('userImage', document.querySelector('#user-image')).files[0]
 
         fetch('http://116.203.125.0:12001/signup', {
             body: formData,
@@ -137,34 +136,37 @@ export const actions = {
 
                 console.log(result)
                 if (result.status === 1 || result.status === 3) {
-                    
-                    //testing setting loggedin boolean
-                    if (localStorage.getItem('token') !== null) {
-                        this.$store.commit('setLoggedIn', true)
-                        window.location.reload
-                    }
-                    // window.location.replace("http://localhost:8080/#/map")
+
+                        context.commit('setLoggedIn', true)
+                        window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
-    logout() {
+    logout(context) {
         console.log(localStorage.getItem("token"));
         fetch('http://116.203.125.0:12001/logout', {
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'DELETE'
         }).then(response => response.json())
             .then(result => {
+                context.commit('setLoggedIn', false)
                 localStorage.removeItem('token')
                 console.log(result)
             })
-            
+
         window.location.replace("http://localhost:8080/#/");
     },
     changePinInt(context) {
         if (context.state.pinInt != 0) {
             context.state.pinInt = 0
         }
+    },
+    reloadWindow() {
+        return new Promise((resolve) => {
+            window.location.reload()
+            resolve(true)
+        })
     }
 }
