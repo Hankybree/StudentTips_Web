@@ -140,14 +140,13 @@ export const actions = {
     logout() {
         console.log(localStorage.getItem("token"));
         fetch('http://116.203.125.0:12001/logout', {
-
             headers: {
                 'Token' : localStorage.getItem('token')
             },
             method: 'DELETE'
         }).then(response => response.json())
             .then(result => {
-                localStorage.setItem('token',null)
+                localStorage.removeItem('token')
                 console.log(result)
             })
             
