@@ -69,8 +69,6 @@ html {
 }
 #footer {
   color: white;
-  /* text-align: left; */
-  padding: 5px;
   bottom: 0px;
   height: 25px;
   width: 100%;
