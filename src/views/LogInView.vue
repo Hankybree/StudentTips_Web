@@ -2,7 +2,7 @@
   <div>
     <br />
     <div v-if="!loggedIn">
-      <img alt="Vue logo" src="../assets/logo3.png" />
+      <img class="animate__animated animate__rollIn" alt="Vue logo" src="../assets/logo3.png" />
 
       <!-- div showing if NOT logged in -->
       <div id="login-screen">
