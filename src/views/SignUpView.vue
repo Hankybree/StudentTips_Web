@@ -6,17 +6,17 @@
       <!--SignUp-->
 
       <!-- added v-model and onClick function -->
-      <input placeholder="Username" type="text" name="userName" v-model="userName" id="username" />
+      <input placeholder="Username..." type="text" name="userName" v-model="userName" id="username" />
       <br />
       <input
-        placeholder="Password"
+        placeholder="Password..."
         type="password"
         name="userPassword"
         v-model="userPassword"
         id="password"
       />
       <br />
-      <input placeholder="Email" type="text" name="userEmail" v-model="userEmail" id="email" />
+      <input placeholder="Email..." type="text" name="userEmail" v-model="userEmail" id="email" />
       <br />
       <input
         name="userImage"

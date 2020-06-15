@@ -7,10 +7,10 @@
     <div v-if="!loggedIn" class="login-screen">
       <!--Login-->
       <form @keyup.enter="logIn()">
-        <input placeholder="Username" type="text" name="userName" id="username" v-model="userName" />
+        <input placeholder="Username..." type="text" name="userName" id="username" v-model="userName" />
         <br />
         <input
-          placeholder="Password"
+          placeholder="Password..."
           type="password"
           name="passWord"
           id="passWord"

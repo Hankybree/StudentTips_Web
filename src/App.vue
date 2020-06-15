@@ -39,7 +39,7 @@ html {
   padding: 0;
 }
 #head {
-  padding-top: 15px;
+  padding-top: 20px;
   height: 10vh;
   background-color: #ffb042;
   /*extra bold font*/
@@ -69,7 +69,7 @@ html {
 }
 #footer {
   color: white;
-  text-align: left;
+  /* text-align: left; */
   padding: 5px;
   bottom: 0px;
   height: 25px;
@@ -91,7 +91,7 @@ input[type="button"] {
   color: white;
 }
 input[type="text"], input[type="password"] {
-  padding-left: 5px;
+  padding-left: 10px;
   height: 30px;
   width: 200px;
   border-radius: 1em;
