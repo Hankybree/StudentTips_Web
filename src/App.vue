@@ -39,6 +39,7 @@ html {
   padding: 0;
 }
 #head {
+  padding-top: 15px;
   height: 10vh;
   background-color: #ffb042;
   /*extra bold font*/
@@ -72,6 +73,12 @@ html {
 }
 #sign-out {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+}
+input[type="button"] {
+  width: 50px;
+  border-radius: 8px;
+  background-color: rgb(127, 38, 46);
+  color: white;
 }
 </style> 

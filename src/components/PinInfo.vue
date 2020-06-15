@@ -52,12 +52,12 @@
         />
         <div>
           <div v-if="pinInt === 1">
-            <input id="input" type="button" value="Post!" @click="postPin()" />
+            <input type="button" value="Post!" @click="postPin()" />
           </div>
           <div v-else>
-            <input id="input" type="button" value="Save changes" @click="patchPin()" />
+            <input type="button" value="Save changes" @click="patchPin()" />
           </div>
-          <input id="input" type="button" value="Back" @click="changePinInt()" />
+          <input type="button" value="Back" @click="changePinInt()" />
         </div>
       </div>
     </div>
@@ -164,10 +164,5 @@ h2 {
   font-family: Raleway;
   font-size: 12pt;
   color: black;
-}
-#input[type="button"] {
-  width: 50px;
-  border-radius: 8px;
-  background-color: #fcbf49;
 }
 </style>
