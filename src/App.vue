@@ -2,14 +2,15 @@
   <div id="app">
     <header id="head">
       <p id="header-text">Tip Top</p>
-      <input type="button" value="Logout" id="signOutbtn" @click="logout()" v-if="!loggedIn" />
-      <router-link to="/map">Map</router-link>
-      <span>
-      <router-link to="/" SignUp>Home</router-link>
-      </span>
+      <div id="sign-out" v-if="$store.state.loggedIn">
+        <router-link to="/map">Map</router-link>
+        <router-link to="/">{{ $store.state.user.userName }}</router-link>
+        <input type="button" value="Logout" @click="logout()">
+      </div>
     </header>
     <router-view></router-view>
     <footer id="footer">
+      ©TipTop, All rights reserved
       <!--footer content, copywrite text?-->
     </footer>
   </div>
@@ -17,6 +18,11 @@
 
 <script>
 export default {
+  created() {
+    if (localStorage.getItem('token')) {
+      this.$store.dispatch('getSession')
+    }
+  },
   name: "App",
   methods: {
     logout(){
@@ -39,9 +45,10 @@ html {
   font-weight: 900;
   margin-bottom: 20px;
 }
-#head > a {
+#sign-out > a {
   color: white;
   text-decoration: none;
+  margin-right: 5px;
 }
 #app {
   font-family: Raleway;
@@ -51,6 +58,7 @@ html {
   color: #2c3e50;
 }
 #footer {
+  color: white;
   position: absolute;
   bottom: 0px;
   height: 25px;
@@ -62,9 +70,8 @@ html {
   padding: 0;
   font-size: 27pt;
 }
-#signOutbtn {
-  position: absolute;
-  left: 95%;
-  top: 25px;
+#sign-out {
+  display: flex;
+  justify-content: end;
 }
 </style> 

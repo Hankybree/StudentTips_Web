@@ -68,6 +68,7 @@ export default {
               title: p.pinTitle,
               tag: p.pinTags,
               image: p.pinImage,
+              user: p.pinUser,
               icon: "bar",
 
               Description: p.pinDescription
@@ -120,7 +121,8 @@ export default {
         store.commit(
           "setPinCoordinatesX",
           clickedPoint.geometry.coordinates[0]
-        );
+        )
+        store.commit('setPinCreator', clickedPoint.properties.user)
 
         store.commit(
           "setPinCoordinatesY",
@@ -133,10 +135,7 @@ export default {
           center: clickedPoint.geometry.coordinates,
           zoom: 15
         });
-        new mapboxgl.Popup()
-          .setLngLat(clickedPoint.geometry.coordinates)
-          .setHTML(desc)
-          .addTo(map);
+        
       } else {
         var p = e.lngLat;
         store.commit("setPinTitle", "");

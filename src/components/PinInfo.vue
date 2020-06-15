@@ -5,6 +5,10 @@
         <img :src="$store.state.pinImage" />
 
         <h2>{{$store.state.pinTitle}}</h2>
+        <div v-if="$store.state.pinCreator === $store.state.activeUser">
+          <input type="button" value="Update">
+          <input type="button" value="Delete">
+        </div>
       </div>
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
@@ -44,6 +48,7 @@
           placeholder="Beskrvning"
           rows="10"
           name="pinDescription"
+          
         />
         <div>
           <input id="input" type="button" value="Post!" @click="postPin()" />
@@ -105,10 +110,16 @@ export default {
   min-width: 15vw;
   max-width: 25vh;
   min-height: 71vh;
+ max-width: 200px;
+ overflow-wrap: break-word; 
+ word-wrap: break-word;
+ word-break: break-all;
+  
 }
 #box {
   border: 6px solid #f77f00;
   border-radius: 8px;
+  
 }
 p {
   word-break: break-all;
