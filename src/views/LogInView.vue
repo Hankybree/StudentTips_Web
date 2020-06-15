@@ -59,12 +59,10 @@ export default {
   /*primary color*/
   background-color: #ff8400;
   width: 50%;
-  height: 200px;
+  padding: 20px;
+  /* height: 200px; */
 }
-#userName {
-  margin-top: 2em;
-}
-#passWord {
-  margin-top: 2em;
+#userName, #password {
+  margin: 10px;
 }
 </style>

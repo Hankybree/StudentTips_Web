@@ -9,6 +9,7 @@
       </div>
     </header>
     <router-view></router-view>
+    <div id="spacer"></div>
     <footer id="footer">
       ©TipTop, All rights reserved
       <!--footer content, copywrite text?-->
@@ -57,10 +58,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#spacer {
+  flex-grow: 1;
 }
 #footer {
   color: white;
-  position: absolute;
+  text-align: left;
+  padding: 5px;
   bottom: 0px;
   height: 25px;
   width: 100%;
