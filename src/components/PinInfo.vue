@@ -4,6 +4,10 @@
       <div id="box">
         <img v-bind:src="pinImage" />
         <h2>{{$store.state.pinTitle}}</h2>
+        <div v-if="$store.state.pinCreator === $store.state.activeUser">
+          <input type="button" value="Update">
+          <input type="button" value="Delete">
+        </div>
       </div>
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>

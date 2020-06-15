@@ -39,6 +39,7 @@ export const store = new Vuex.Store({
     loggedIn: false,
     activeUser: -1,
     user: {},
+    pinCreator: -1,
 
     //Map Variables
     center: [11.989179, 57.690902],
@@ -94,6 +95,9 @@ export const store = new Vuex.Store({
     },
     setUser(state, newUser) {
       state.user = newUser
+    },
+    setPinCreator(state, newPinCreator) {
+      state.pinCreator = newPinCreator
     },
 
     //Testing
