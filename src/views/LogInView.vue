@@ -2,13 +2,19 @@
   <div>
     <br />
     <div v-if="!loggedIn">
-      <img alt="Vue logo" src="../assets/logo3.png" />
-  
+      <img class="animate__animated animate__rollIn" alt="Vue logo" src="../assets/logo3.png" />
+
       <!-- div showing if NOT logged in -->
       <div id="login-screen">
         <!--Login-->
         <form @keyup.enter="logIn()">
-          <input placeholder="Username..." type="text" name="userName" id="username" v-model="userName" />
+          <input
+            placeholder="Username..."
+            type="text"
+            name="userName"
+            id="username"
+            v-model="userName"
+          />
           <br />
           <input
             placeholder="Password..."
@@ -28,18 +34,16 @@
     <!-- div showing if logged in -->
     <div v-if="loggedIn" id="profile-screen">
       <div v-if="$store.state.user.userImage !== null">
-        <img class="image-style" :src="$store.state.user.userImage">
+        <img class="image-style" :src="$store.state.user.userImage" />
       </div>
       <div v-else>
-        <img class="image-style" src="../assets/logo3.png">
+        <img class="image-style" src="../assets/logo3.png" />
       </div>
       <h2>{{$store.state.user.userName}}</h2>
       <div>Your pins:</div>
-      <br>
+      <br />
       <div :key="index" v-for="(pin, index) in pins">
-        <div v-if="pin.pinUser === $store.state.activeUser">
-          {{ pin.pinTitle }}
-        </div>
+        <div v-if="pin.pinUser === $store.state.activeUser">{{ pin.pinTitle }}</div>
       </div>
     </div>
   </div>
@@ -50,20 +54,20 @@
 import { computed } from "../scripts/computed";
 export default {
   beforeCreate() {
-    this.pins = null
+    this.pins = null;
   },
   created() {
-    fetch('http://116.203.125.0:12001/pins')
+    fetch("http://116.203.125.0:12001/pins")
       .then(response => response.json())
       .then(result => {
-        this.pins = result
-      })
+        this.pins = result;
+      });
   },
   name: "LogInView",
   data() {
     return {
       pins: null
-    }
+    };
   },
   methods: {
     logIn() {
@@ -78,7 +82,6 @@ export default {
 
 
 <style scoped>
-
 .image-style {
   object-fit: scale-down;
   object-position: center;
@@ -107,7 +110,9 @@ img {
   padding: 20px;
   margin: auto;
 }
-#username, #password, #loginbtn {
+#username,
+#password,
+#loginbtn {
   margin: 10px;
 }
 </style>
