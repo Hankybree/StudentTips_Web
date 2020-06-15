@@ -2,7 +2,8 @@
   <div>
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
-        <img v-bind:src="pinImage" />
+        <img :src="$store.state.pinImage" />
+
         <h2>{{$store.state.pinTitle}}</h2>
       </div>
       <div id="box" style="min-height: 37vh;">
@@ -63,12 +64,6 @@ export default {
 
   computed: computed,
   methods: {
-    getPins() {
-      this.$store.dispatch("getPins");
-    },
-    getSinglePin() {
-      this.$store.dispatch("getSinglePin");
-    },
     postPin() {
       this.$store.dispatch("postPin");
       this.$store.commit("setPinTitle", "");
@@ -77,9 +72,12 @@ export default {
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
 
-       //Testing
-      this.$store.commit("setCenter", [this.$store.state.pinCoordinates.x, this.$store.state.pinCoordinates.y])
-      window.location.reload
+      //Testing
+      this.$store.commit("setCenter", [
+        this.$store.state.pinCoordinates.x,
+        this.$store.state.pinCoordinates.y
+      ]);
+      window.location.reload;
     },
     patchPin() {
       this.$store.dispatch("patchPin");
