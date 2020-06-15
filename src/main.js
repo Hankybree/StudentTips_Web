@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App.vue'
+import Animate from 'animate.css'
 
 import 'typeface-raleway'
 import { actions } from './scripts/actions.js'
@@ -10,8 +11,11 @@ import MapView from './views/MapView.vue'
 import LogInView from './views/LogInView.vue'
 import SignUpView from './views/SignUpView.vue'
 
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(Animate)
+
 
 const router = new VueRouter({
   routes: [
@@ -116,5 +120,6 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
-  store
+  store,
+  Animate
 }).$mount('#app')

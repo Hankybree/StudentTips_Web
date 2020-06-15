@@ -1,13 +1,19 @@
 <template>
   <div>
     <br />
-    <img alt="Vue logo" src="../assets/logo3.png" />
+    <img class="animate__animated animate__rollIn" alt="Vue logo" src="../assets/logo3.png" />
 
     <!-- div showing if NOT logged in -->
     <div v-if="!loggedIn" class="login-screen">
       <!--Login-->
       <form @keyup.enter="logIn()">
-        <input placeholder="Username..." type="text" name="userName" id="username" v-model="userName" />
+        <input
+          placeholder="Username..."
+          type="text"
+          name="userName"
+          id="username"
+          v-model="userName"
+        />
         <br />
         <input
           placeholder="Password..."
@@ -26,10 +32,10 @@
     <!-- div showing if logged in -->
     <div v-if="loggedIn" class="loginScreen">
       <div v-if="$store.state.user.userImage !== null">
-        <img class="imageStyle" :src="$store.state.user.userImage">
+        <img class="imageStyle" :src="$store.state.user.userImage" />
       </div>
       <div v-else>
-        <img class="imageStyle" src="../assets/logo3.png">
+        <img class="imageStyle" src="../assets/logo3.png" />
       </div>
       <h2>{{$store.state.user.userName}}</h2>
     </div>
@@ -54,7 +60,6 @@ export default {
 
 
 <style scoped>
-
 .imageStyle {
   object-fit: scale-down;
   object-position: center;
@@ -75,7 +80,10 @@ export default {
   padding: 20px;
   margin: auto;
 }
-#username, #password, #loginbtn {
+
+#username,
+#password,
+#loginbtn {
   margin: 10px;
 }
 </style>
