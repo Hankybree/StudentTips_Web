@@ -43,7 +43,7 @@ export const store = new Vuex.Store({
 
     //Map Variables
     center: [11.989179, 57.690902],
-    zoom: 10, 
+    zoom: 10,
 
   },
   mutations: {

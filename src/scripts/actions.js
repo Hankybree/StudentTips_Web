@@ -8,10 +8,10 @@ export const actions = {
             })
     },
     getSinglePin(context) {
+
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId)
             .then(response => response.json())
             .then(result => {
-
                 context.commit('setPinTitle', result.pinTitle)
                 context.commit('setPinDescription', result.pinDescription)
                 context.commit('setPinImage', result.pinImage)
@@ -19,9 +19,9 @@ export const actions = {
                 context.commit('setPinCoordinatesX', result.pinCoordinates.x)
                 context.commit('setPinCoordinatesY', result.pinCoordinates.y)
                 context.commit('setPinUser', result.pinUser)
-
                 console.log(result)
             })
+
     },
     postPin(context) {
 
@@ -29,12 +29,17 @@ export const actions = {
 
         formData.append('pinTitle', context.state.pinTitle)
         formData.append('pinDescription', context.state.pinDescription)
-        formData.append('pinImage', document.querySelector('#pin-image').files[0])
+        if (document.querySelector('#pin-image').files[0] !== undefined) {
+            formData.append('pinImage', document.querySelector('#pin-image').files[0])
+        } else {
+            formData.append('pinImage', null)
+        }
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
         formData.append('pinUser', context.state.pinUser)
         context.commit('setPinInt', 0)
-        console.log(context.state.pinBool)
+
+
 
 
         fetch('http://116.203.125.0:12001/pins', {
@@ -59,14 +64,14 @@ export const actions = {
     },
     patchPin(context) {
 
+        console.log(document.querySelector('#pin-image').files[0])
+
         let formData = new FormData()
 
         formData.append('pinTitle', context.state.pinTitle)
         formData.append('pinDescription', context.state.pinDescription)
         if (document.querySelector('#pin-image').files[0] !== undefined) {
             formData.append('pinImage', document.querySelector('#pin-image').files[0])
-        } else {
-            formData.append('pinImage', null)
         }
         formData.append('pinTags', JSON.stringify(context.state.pinTags))
         formData.append('pinCoordinates', JSON.stringify(context.state.pinCoordinates))
@@ -81,6 +86,15 @@ export const actions = {
         }).then(response => response)
             .then(result => {
                 console.log(result)
+                context.dispatch('reloadWindow')
+                    .then(() => {
+                        context.commit('setCenter', context.state.pinCoordinates)
+                        context.commit('setPinTitle', "")
+                        context.commit('setPinDescription', "")
+                        context.commit('setPinCoordinatesX', 0)
+                        context.commit('setPinCoordinatesY', 0)
+                        context.commit('setPinTags', [])
+                    })
             })
     },
     deletePin(context) {
@@ -92,6 +106,7 @@ export const actions = {
         }).then(response => response)
             .then(result => {
                 console.log(result)
+                window.location.reload()
             })
     },
 
@@ -145,7 +160,7 @@ export const actions = {
                     window.location.replace("http://localhost:8080/#/map")
                 }
                 else if (result.status === 2) {
-                    alert("Inconrect username or password")
+                    alert("Incorrect username or password")
                 }
             })
     },

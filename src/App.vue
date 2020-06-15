@@ -9,8 +9,9 @@
       </div>
     </header>
     <router-view></router-view>
+    <div id="spacer"></div>
     <footer id="footer">
-      <!--footer content, copywrite text?-->
+      ©TipTop, All rights reserved 2020
     </footer>
   </div>
 </template>
@@ -38,6 +39,7 @@ html {
   padding: 0;
 }
 #head {
+  padding-top: 20px;
   height: 10vh;
   background-color: #ffb042;
   /*extra bold font*/
@@ -47,7 +49,10 @@ html {
 #sign-out > a {
   color: white;
   text-decoration: none;
-  margin-right: 5px;
+  margin-right: 20px;
+}
+#sign-out {
+  margin-right: 15px;
 }
 #app {
   font-family: Raleway;
@@ -55,9 +60,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#spacer {
+  flex-grow: 1;
 }
 #footer {
-  position: absolute;
+  color: white;
+  /* text-align: left; */
+  padding: 5px;
   bottom: 0px;
   height: 25px;
   width: 100%;
@@ -70,8 +83,17 @@ html {
 }
 #sign-out {
   display: flex;
-  position: absolute;
-  left: 90%;
-  top: 25px;
+  justify-content: flex-end;
+}
+input[type="button"] {
+  border-radius: 8px;
+  background-color: rgb(127, 38, 46);
+  color: white;
+}
+input[type="text"], input[type="password"] {
+  padding-left: 10px;
+  height: 30px;
+  width: 200px;
+  border-radius: 1em;
 }
 </style> 

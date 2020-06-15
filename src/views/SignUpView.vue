@@ -6,17 +6,17 @@
       <!--SignUp-->
 
       <!-- added v-model and onClick function -->
-      <input placeholder="Username" type="text" name="userName" v-model="userName" id="userName" />
+      <input placeholder="Username..." type="text" name="userName" v-model="userName" id="username" />
       <br />
       <input
-        placeholder="Password"
+        placeholder="Password..."
         type="password"
         name="userPassword"
         v-model="userPassword"
-        id="passWord"
+        id="password"
       />
       <br />
-      <input placeholder="Email" type="text" name="userEmail" v-model="userEmail" id="Email" />
+      <input placeholder="Email..." type="text" name="userEmail" v-model="userEmail" id="email" />
       <br />
       <input
         name="userImage"
@@ -25,7 +25,7 @@
         accept="image/x-png, image/gif, image/jpeg"
       />
       <br />
-      <input type="button" value="Register" id="registerBtn" @click="postUser()" />
+      <input type="button" value="Register" id="registerbtn" @click="postUser()" />
       <br />
       <router-link to="/">Cancel</router-link>
     </div>
@@ -53,19 +53,16 @@ export default {
 
 
 <style scoped>
+img {
+  margin-bottom: 20px;
+}
 #signUpScreen {
-  position: absolute;
-  left: 25%;
-  margin-top: 5em;
-  /*primary color*/
   background-color: #ff8400;
   width: 50%;
-  height: 200px;
+  padding: 20px;
+  margin: auto;
 }
-#userName {
-  margin-top: 2em;
-}
-#passWord {
-  margin-top: 2em;
+#username, #password, #email, #user-image, #registerbtn {
+  margin: 5px;
 }
 </style>

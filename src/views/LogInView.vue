@@ -4,13 +4,13 @@
     <img alt="Vue logo" src="../assets/logo3.png" />
 
     <!-- div showing if NOT logged in -->
-    <div v-if="!loggedIn" class="loginScreen">
+    <div v-if="!loggedIn" class="login-screen">
       <!--Login-->
       <form @keyup.enter="logIn()">
-        <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
+        <input placeholder="Username..." type="text" name="userName" id="username" v-model="userName" />
         <br />
         <input
-          placeholder="Password"
+          placeholder="Password..."
           type="password"
           name="passWord"
           id="passWord"
@@ -20,7 +20,7 @@
         <input type="button" value="Login" id="loginbtn" @click="logIn()" />
       </form>
       <br />
-      <router-link to="/signup" SignUp>Register?</router-link>
+      <router-link to="/signup">Don't have an account? Register here!</router-link>
     </div>
 
     <!-- div showing if logged in -->
@@ -72,12 +72,10 @@ export default {
   /*primary color*/
   background-color: #ff8400;
   width: 50%;
-  height: 200px;
+  padding: 20px;
+  margin: auto;
 }
-#userName {
-  margin-top: 2em;
-}
-#passWord {
-  margin-top: 2em;
+#username, #password, #loginbtn {
+  margin: 10px;
 }
 </style>

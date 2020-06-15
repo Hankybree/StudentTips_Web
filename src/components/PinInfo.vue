@@ -2,27 +2,26 @@
   <div>
     
     <div v-if="pinInt === 2" class="GetPin">
-      
-      <div id="box" v-if="$store.state.pinImage !== 'null'">
-        <img v-bind:src="pinImage" />
+      <div id="box">
+        <div v-if="$store.state.pinImage !== 'null'">
+          <img :src="$store.state.pinImage" />
+        </div>
+        <div v-else>
+          <img src="../assets/logo3.png" alt="Logo">
+        </div>
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
-          <input type="button" value="Update">
-          <input type="button" value="Delete">
+          <input type="button" value="Update" @click="$store.commit('setPinInt', 3)" />
+          <input type="button" value="Delete" @click="deletePin()" />
         </div>
-      </div>
-      
-      <div id="box"  v-else>
-        <img src="../assets/logo3.png">
       </div>
 
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
+      <input type="button" value="Close" @click="changePinInt()" />
     </div>
-    
-    
-    <div v-if="pinInt === 1" class="PinInfo">
+    <div v-if="pinInt === 1 || pinInt === 3" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
 
@@ -58,8 +57,13 @@
           name="pinDescription"
         />
         <div>
-          <input id="input" type="button" value="Post!" @click="postPin()" />
-          <input id="input" type="button" value="Back" @click="changePinInt()" />
+          <div v-if="pinInt === 1">
+            <input type="button" value="Post!" @click="postPin()" />
+          </div>
+          <div v-else>
+            <input type="button" value="Save changes" @click="patchPin()" />
+          </div>
+          <input type="button" value="Back" @click="changePinInt()" />
         </div>
       </div>
     </div>
@@ -76,12 +80,6 @@ export default {
 
   computed: computed,
   methods: {
-    getPins() {
-      this.$store.dispatch("getPins");
-    },
-    getSinglePin() {
-      this.$store.dispatch("getSinglePin");
-    },
     postPin() {
       this.$store.dispatch("postPin");
       this.$store.commit("setPinTitle", "");
@@ -90,11 +88,15 @@ export default {
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
 
-       //Testing
-      this.$store.commit("setCenter", [this.$store.state.pinCoordinates.x, this.$store.state.pinCoordinates.y])
-      window.location.reload
+      //Testing
+      this.$store.commit("setCenter", [
+        this.$store.state.pinCoordinates.x,
+        this.$store.state.pinCoordinates.y
+      ]);
+      window.location.reload;
     },
     patchPin() {
+      console.log("pressed patch");
       this.$store.dispatch("patchPin");
     },
     deletePin() {
@@ -104,7 +106,7 @@ export default {
       this.$store.dispatch("changePinInt");
     },
     print() {
-      console.log(this.$store.state.pinTags);
+      console.log(this.$store.state.pinImage);
     }
   }
 };
@@ -118,11 +120,22 @@ export default {
   background-color: #fcbf49;
   border-radius: 8px;
   min-width: 15vw;
+  max-width: 25vh;
   min-height: 71vh;
+  max-width: 200px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 #box {
   border: 6px solid #f77f00;
   border-radius: 8px;
+}
+p {
+  word-break: break-all;
+}
+h2 {
+  word-break: break-all;
 }
 
 .PinInfo {
@@ -156,10 +169,5 @@ export default {
   font-family: Raleway;
   font-size: 12pt;
   color: black;
-}
-#input[type="button"] {
-  width: 50px;
-  border-radius: 8px;
-  background-color: #fcbf49;
 }
 </style>
