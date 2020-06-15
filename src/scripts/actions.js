@@ -160,7 +160,7 @@ export const actions = {
                     window.location.replace("http://localhost:8080/#/map")
                 }
                 else if (result.status === 2) {
-                    alert("Inconrect username or password")
+                    alert("Incorrect username or password")
                 }
             })
     },

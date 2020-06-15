@@ -50,7 +50,10 @@ html {
 #sign-out > a {
   color: white;
   text-decoration: none;
-  margin-right: 5px;
+  margin-right: 20px;
+}
+#sign-out {
+  margin-right: 15px;
 }
 #app {
   font-family: Raleway;
@@ -84,9 +87,14 @@ html {
   justify-content: flex-end;
 }
 input[type="button"] {
-  width: 50px;
   border-radius: 8px;
   background-color: rgb(127, 38, 46);
   color: white;
+}
+input[type="text"], input[type="password"] {
+  padding-left: 5px;
+  height: 30px;
+  width: 200px;
+  border-radius: 1em;
 }
 </style> 
