@@ -43,6 +43,7 @@
           placeholder="Beskrvning"
           rows="10"
           name="pinDescription"
+          
         />
         <div>
           <input id="input" type="button" value="Post!" @click="postPin()" />
@@ -106,10 +107,16 @@ export default {
   border-radius: 8px;
   min-width: 15vw;
   min-height: 71vh;
+ max-width: 200px;
+ overflow-wrap: break-word; 
+ word-wrap: break-word;
+ word-break: break-all;
+  
 }
 #box {
   border: 6px solid #f77f00;
   border-radius: 8px;
+  
 }
 
 .PinInfo {
