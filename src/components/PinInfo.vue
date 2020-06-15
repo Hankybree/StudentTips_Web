@@ -42,11 +42,11 @@
           required
         />
         <div id="no-show">don't show me</div>
-        <div>
+        <!-- <div id="no-show">
           <input v-model="pinCoordinatesY" />
           <br />
-          <input name="pinCoordinates" v-model="pinCoordinatesX" />
-        </div>
+          <input v-model="pinCoordinatesX" />
+        </div> -->
 
         <textarea
           id="textarea"
