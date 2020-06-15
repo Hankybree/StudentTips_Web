@@ -10,8 +10,7 @@
     </header>
     <router-view></router-view>
     <footer id="footer">
-      ©TipTop, All rights reserved
-      <!--footer content, copywrite text?-->
+      ©TipTop, All rights reserved 2020
     </footer>
   </div>
 </template>
