@@ -181,6 +181,7 @@ export const actions = {
             .then(result => {
                 context.commit('setActiveUser', result.sessionUserId)
                 context.commit('setLoggedIn', true)
+                
                 window.location.replace("http://localhost:8080/#/map")
             })
     }
