@@ -136,8 +136,10 @@ export const actions = {
 
                 console.log(result)
                 if (result.status === 1 || result.status === 3) {
-
+    
                         context.commit('setLoggedIn', true)
+                        context.commit('setActiveUser', result.user)
+    
                         window.location.replace("http://localhost:8080/#/map")
                 }
             })
@@ -152,6 +154,7 @@ export const actions = {
         }).then(response => response.json())
             .then(result => {
                 context.commit('setLoggedIn', false)
+                context.commit('setActiveUser', -1)
                 localStorage.removeItem('token')
                 console.log(result)
             })
