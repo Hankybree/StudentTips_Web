@@ -54,6 +54,10 @@ export const actions = {
         context.commit('setPinCoordinatesX', 0)
         context.commit('setPinCoordinatesY', 0)
         context.commit('setPinTags', [])
+        
+        //testing
+        window.location.reload
+        context.commit('setCenter', context.state.pinCoordinates)
     },
     patchPin(context) {
 
@@ -133,7 +137,13 @@ export const actions = {
 
                 console.log(result)
                 if (result.status === 1 || result.status === 3) {
-                    window.location.replace("http://localhost:8080/#/map")
+                    
+                    //testing setting loggedin boolean
+                    if (localStorage.getItem('token') !== null) {
+                        this.$store.commit('setLoggedIn', true)
+                        window.location.reload
+                    }
+                    // window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
