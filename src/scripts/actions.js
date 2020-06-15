@@ -137,10 +137,14 @@ export const actions = {
                 console.log(result)
                 if (result.status === 1 || result.status === 3) {
 
-                        context.commit('setLoggedIn', true)
-                        window.location.replace("http://localhost:8080/#/map")
+                    context.commit('setLoggedIn', true)
+                    context.commit('setActiveUser', result.user)
+
+                    context.dispatch('getUser')
+
+                    window.location.replace("http://localhost:8080/#/map")
                 }
-                else if(result.status === 2){
+                else if (result.status === 2) {
                     alert("Inconrect username or password")
                 }
             })
@@ -155,6 +159,8 @@ export const actions = {
         }).then(response => response.json())
             .then(result => {
                 context.commit('setLoggedIn', false)
+                context.commit('setActiveUser', -1)
+                context.commit('setUser', {})
                 localStorage.removeItem('token')
                 console.log(result)
             })
@@ -171,5 +177,27 @@ export const actions = {
             window.location.reload()
             resolve(true)
         })
+    },
+    getSession(context) {
+        fetch('http://116.203.125.0:12001/session', {
+            headers: {
+                'Token': localStorage.getItem('token')
+            }
+        }).then(response => response.json())
+            .then(result => {
+                context.commit('setActiveUser', result.sessionUserId)
+                context.commit('setLoggedIn', true)
+
+                context.dispatch('getUser')
+
+                window.location.replace("http://localhost:8080/#/map")
+            })
+    },
+    getUser(context) {
+        fetch('http://116.203.125.0:12001/users/' + context.state.activeUser)
+            .then(response => response.json())
+            .then(result => {
+                context.commit('setUser', result)
+            })
     }
 }
