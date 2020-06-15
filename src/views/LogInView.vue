@@ -24,12 +24,14 @@
     </div>
 
     <!-- div showing if logged in -->
-    <div v-if="loggedIn" class="login-screen">
-      <!-- Visa profiluppgifter
-      visa profilbild
-      Logga ut-alternativ-->
-
-      <input placeholder="Password" type="text" name="passWord" id="passWord" />
+    <div v-if="loggedIn" class="loginScreen">
+      <div v-if="$store.state.user.userImage !== null">
+        <img class="imageStyle" :src="$store.state.user.userImage">
+      </div>
+      <div v-else>
+        <img class="imageStyle" src="../assets/logo3.png">
+      </div>
+      <h2>{{$store.state.user.userName}}</h2>
     </div>
   </div>
 </template>
@@ -52,10 +54,22 @@ export default {
 
 
 <style scoped>
-img {
-  margin-bottom: 20px;
+
+.imageStyle {
+  object-fit: scale-down;
+  object-position: center;
+
+  max-width: 15vw;
+  max-height: 20vh;
+
+  margin-top: 1vh;
 }
-.login-screen {
+
+.loginScreen {
+  position: absolute;
+  left: 25%;
+  margin-top: 5em;
+  /*primary color*/
   background-color: #ff8400;
   width: 50%;
   padding: 20px;

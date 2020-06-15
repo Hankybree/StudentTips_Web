@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
         <div v-if="$store.state.pinImage !== 'null'">
@@ -14,6 +15,7 @@
           <input type="button" value="Delete" @click="deletePin()" />
         </div>
       </div>
+
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
@@ -144,8 +146,9 @@ h2 {
   border: solid 2px black;
 }
 
-div > img {
-  object-fit: cover;
+#box > img {
+  /* object-fit: cover; */
+  object-fit: scale-down;
   object-position: -40% 10;
 
   max-width: 25vw;
