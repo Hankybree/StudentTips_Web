@@ -36,7 +36,12 @@ export const store = new Vuex.Store({
     userPassword: "",
     userEmail: "",
     pinInt: 0,
-    loggedIn: false
+    loggedIn: false,
+
+    //Map Variables
+    center: [11.989179, 57.690902],
+    zoom: 10, 
+
   },
   mutations: {
 
@@ -81,6 +86,14 @@ export const store = new Vuex.Store({
     },
     setLoggedIn(state, newLoggedIn) {
       state.loggedIn = newLoggedIn
+    },
+
+    //Testing
+    setCenter(state, newCenter) {
+      state.center = newCenter
+    },
+    setZoom(state, newZoom) {
+      state.zooom = newZoom
     }
   },
   actions: actions

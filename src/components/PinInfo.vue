@@ -76,6 +76,10 @@ export default {
       this.$store.commit("setPinCoordinatesX", 0);
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
+
+       //Testing
+      this.$store.commit("setCenter", [this.$store.state.pinCoordinates.x, this.$store.state.pinCoordinates.y])
+      window.location.reload
     },
     patchPin() {
       this.$store.dispatch("patchPin");

@@ -19,8 +19,9 @@ export default {
         "pk.eyJ1Ijoic2FtaWVoIiwiYSI6ImNrYWZhZHpqajIzcGwzNHM5b29sMG14NTQifQ.g-aQlEoxJwrmu2_7ONlevg"; // optional
       return new mapboxgl.Map({
         container: "map",
-        center: [11.989179, 57.690902],
-        zoom: 10,
+        center: this.$store.state.center,
+        //  : [11.989179, 57.690902],
+        zoom: this.$store.state.zoom,
         pitch: 10,
         bearing: -10,
         interactive: true,

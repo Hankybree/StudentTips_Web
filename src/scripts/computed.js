@@ -84,6 +84,24 @@ export const computed = {
         }
     },
 
+    //testing
+    center: {
+        get() {
+            return this.$store.state.center
+        },
+        set(newCenter) {
+            this.$store.commit('setCenter', newCenter)
+        }
+    },
+    zoom: {
+        get() {
+            return this.$store.state.zoom
+        },
+        set(newZoom) {
+            this.$store.commit('setZoom', newZoom)
+        }
+    },
+
 
     //computed properties for users
     userName: {
