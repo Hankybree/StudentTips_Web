@@ -2,11 +2,11 @@
   <div id="app">
     <header id="head">
       <p id="header-text">Tip Top</p>
-      <input type="button" value="Logout" id="signOutbtn" @click="logout()" v-if="!loggedIn" />
-      <router-link to="/map">Map</router-link>
-      <span>
-      <router-link to="/" SignUp>Home</router-link>
-      </span>
+      <div id="sign-out" v-if="$store.state.loggedIn">
+        <router-link to="/map">Map</router-link>
+        <router-link to="/">{{ $store.state.user.userName }}</router-link>
+        <input type="button" value="Logout" @click="logout()">
+      </div>
     </header>
     <router-view></router-view>
     <footer id="footer">
@@ -17,6 +17,11 @@
 
 <script>
 export default {
+  created() {
+    if (localStorage.getItem('token')) {
+      this.$store.dispatch('getSession')
+    }
+  },
   name: "App",
   methods: {
     logout(){
@@ -39,9 +44,10 @@ html {
   font-weight: 900;
   margin-bottom: 20px;
 }
-#head > a {
+#sign-out > a {
   color: white;
   text-decoration: none;
+  margin-right: 5px;
 }
 #app {
   font-family: Raleway;
@@ -62,9 +68,10 @@ html {
   padding: 0;
   font-size: 27pt;
 }
-#signOutbtn {
+#sign-out {
+  display: flex;
   position: absolute;
-  left: 95%;
+  left: 90%;
   top: 25px;
 }
 </style> 
