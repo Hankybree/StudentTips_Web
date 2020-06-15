@@ -54,7 +54,7 @@ export const actions = {
         context.commit('setPinCoordinatesX', 0)
         context.commit('setPinCoordinatesY', 0)
         context.commit('setPinTags', [])
-        
+
         //testing
         window.location.reload
         context.commit('setCenter', context.state.pinCoordinates)
@@ -77,7 +77,7 @@ export const actions = {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             body: formData,
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'PATCH'
         }).then(response => response)
@@ -88,7 +88,7 @@ export const actions = {
     deletePin(context) {
         fetch('http://116.203.125.0:12001/pins/' + context.state.pinId, {
             headers: {
-                'Token' : localStorage.getItem('token')
+                'Token': localStorage.getItem('token')
             },
             method: 'DELETE'
         }).then(response => response)
@@ -137,13 +137,13 @@ export const actions = {
 
                 console.log(result)
                 if (result.status === 1 || result.status === 3) {
-                    
+
                     //testing setting loggedin boolean
                     if (localStorage.getItem('token') !== null) {
                         this.$store.commit('setLoggedIn', true)
                         window.location.reload
                     }
-                    // window.location.replace("http://localhost:8080/#/map")
+                    window.location.replace("http://localhost:8080/#/map")
                 }
             })
     },
@@ -157,7 +157,7 @@ export const actions = {
             method: 'DELETE'
         }).then(response => response.json())
             .then(result => {
-                localStorage.setItem('token',null)
+                localStorage.setItem('token', null)
                 console.log(result)
             })
 
