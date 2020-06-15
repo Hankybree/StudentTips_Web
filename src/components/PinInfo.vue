@@ -1,13 +1,12 @@
 <template>
   <div>
-    
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
         <div v-if="$store.state.pinImage !== 'null'">
           <img :src="$store.state.pinImage" />
         </div>
         <div v-else>
-          <img src="../assets/logo3.png" alt="Logo">
+          <img src="../assets/logo3.png" alt="Logo" />
         </div>
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
@@ -146,7 +145,7 @@ h2 {
   border: solid 2px black;
 }
 
-#box > img {
+#box > div > img {
   /* object-fit: cover; */
   object-fit: scale-down;
   object-position: -40% 10;
