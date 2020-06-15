@@ -137,10 +137,7 @@ export default {
           center: clickedPoint.geometry.coordinates,
           zoom: 15
         });
-        new mapboxgl.Popup()
-          .setLngLat(clickedPoint.geometry.coordinates)
-          .setHTML(desc)
-          .addTo(map);
+        
       } else {
         var p = e.lngLat;
         store.commit("setPinTitle", "");
