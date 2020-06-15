@@ -140,6 +140,9 @@ export const actions = {
                         context.commit('setLoggedIn', true)
                         window.location.replace("http://localhost:8080/#/map")
                 }
+                else if(result.status === 2){
+                    alert("Inconrect username or password")
+                }
             })
     },
     logout(context) {
