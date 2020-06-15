@@ -4,6 +4,9 @@
       <p id="header-text">Tip Top</p>
       <input type="button" value="Logout" id="signOutbtn" @click="logout()" v-if="!loggedIn" />
       <router-link to="/map">Map</router-link>
+      <span>
+      <router-link to="/" SignUp>Home</router-link>
+      </span>
     </header>
     <router-view></router-view>
     <footer id="footer">

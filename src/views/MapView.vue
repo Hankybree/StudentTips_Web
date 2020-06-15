@@ -2,7 +2,6 @@
   <div class="content">
     <div id="map">
       <Map></Map>
-      <router-link to="/" SignUp>Home</router-link>
     </div>
     <PinInfo></PinInfo>
   </div>
