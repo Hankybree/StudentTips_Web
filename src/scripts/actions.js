@@ -56,18 +56,6 @@ export const actions = {
                         context.commit('setPinTags', [])
                     })
             })
-<<<<<<< HEAD
-        context.commit('setPinTitle', "")
-        context.commit('setPinDescription', "")
-        context.commit('setPinCoordinatesX', 0)
-        context.commit('setPinCoordinatesY', 0)
-        context.commit('setPinTags', [])
-
-        //testing
-        window.location.reload
-        context.commit('setCenter', context.state.pinCoordinates)
-=======
->>>>>>> 670f944aa719bf3c2f717a577b8339b2520558d2
     },
     patchPin(context) {
 
