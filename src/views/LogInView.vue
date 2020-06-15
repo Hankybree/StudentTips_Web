@@ -36,7 +36,11 @@ export default {
       this.$store.dispatch("login");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
-    }
+      
+      
+    
+    },
+    
   },
   computed: computed
 }

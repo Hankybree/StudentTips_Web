@@ -3,6 +3,9 @@
     <header id="head">
       <p id="header-text">Tip Top</p>
       <router-link to="/map">Map</router-link>
+      <span>
+      <router-link to="/" SignUp>Home</router-link>
+      </span>
     </header>
     <router-view></router-view>
     <footer id="footer">
