@@ -171,5 +171,17 @@ export const actions = {
             window.location.reload()
             resolve(true)
         })
+    },
+    getSession(context) {
+        fetch('http://116.203.125.0:12001/session', {
+            headers: {
+                'Token': localStorage.getItem('token')
+            }
+        }).then(response => response.json())
+            .then(result => {
+                context.commit('setActiveUser', result.sessionUserId)
+                context.commit('setLoggedIn', true)
+                window.location.replace("http://localhost:8080/#/map")
+            })
     }
 }
