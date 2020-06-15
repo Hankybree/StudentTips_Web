@@ -1,7 +1,9 @@
 <template>
   <div>
+    
     <div v-if="pinInt === 2" class="GetPin">
-      <div id="box">
+      
+      <div id="box" v-if="$store.state.pinImage !== 'null'">
         <img v-bind:src="pinImage" />
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
@@ -9,10 +11,17 @@
           <input type="button" value="Delete">
         </div>
       </div>
+      
+      <div id="box"  v-else>
+        <img src="../assets/logo3.png">
+      </div>
+
       <div id="box" style="min-height: 37vh;">
         <p>{{$store.state.pinDescription}}</p>
       </div>
     </div>
+    
+    
     <div v-if="pinInt === 1" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
@@ -125,7 +134,8 @@ export default {
 }
 
 #box > img {
-  object-fit: cover;
+  /* object-fit: cover; */
+  object-fit: scale-down;
   object-position: -40% 10;
 
   max-width: 25vw;

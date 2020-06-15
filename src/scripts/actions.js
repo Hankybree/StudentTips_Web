@@ -103,7 +103,7 @@ export const actions = {
         formData.append('userName', context.state.userName)
         formData.append('userPassword', context.state.userPassword)
         formData.append('userEmail', context.state.userEmail)
-        formData.append('userImage', document.querySelector('#user-image')).files[0]
+        formData.append('userImage', document.querySelector('#user-image').files[0])
 
         fetch('http://116.203.125.0:12001/signup', {
             body: formData,
