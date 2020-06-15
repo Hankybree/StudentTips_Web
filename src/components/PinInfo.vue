@@ -2,7 +2,8 @@
   <div>
     <div v-if="pinInt === 2" class="GetPin">
       <div id="box">
-        <img v-bind:src="pinImage" />
+        <img :src="$store.state.pinImage" />
+
         <h2>{{$store.state.pinTitle}}</h2>
         <div v-if="$store.state.pinCreator === $store.state.activeUser">
           <input type="button" value="Update">
@@ -68,12 +69,6 @@ export default {
 
   computed: computed,
   methods: {
-    getPins() {
-      this.$store.dispatch("getPins");
-    },
-    getSinglePin() {
-      this.$store.dispatch("getSinglePin");
-    },
     postPin() {
       this.$store.dispatch("postPin");
       this.$store.commit("setPinTitle", "");
@@ -82,9 +77,12 @@ export default {
       this.$store.commit("setPinCoordinatesY", 0);
       this.$store.commit("setPinTags", []);
 
-       //Testing
-      this.$store.commit("setCenter", [this.$store.state.pinCoordinates.x, this.$store.state.pinCoordinates.y])
-      window.location.reload
+      //Testing
+      this.$store.commit("setCenter", [
+        this.$store.state.pinCoordinates.x,
+        this.$store.state.pinCoordinates.y
+      ]);
+      window.location.reload;
     },
     patchPin() {
       this.$store.dispatch("patchPin");
@@ -110,6 +108,7 @@ export default {
   background-color: #fcbf49;
   border-radius: 8px;
   min-width: 15vw;
+  max-width: 25vh;
   min-height: 71vh;
  max-width: 200px;
  overflow-wrap: break-word; 
@@ -121,6 +120,12 @@ export default {
   border: 6px solid #f77f00;
   border-radius: 8px;
   
+}
+p {
+  word-break: break-all;
+}
+h2 {
+  word-break: break-all;
 }
 
 .PinInfo {
