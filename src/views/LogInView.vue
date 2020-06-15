@@ -6,17 +6,19 @@
     <!-- div showing if NOT logged in -->
     <div v-if="!loggedIn" class="loginScreen">
       <!--Login-->
-      <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
-      <br />
-      <input
-        placeholder="Password"
-        type="password"
-        name="passWord"
-        id="passWord"
-        v-model="userPassword"
-      />
-      <br />
-      <input type="button" value="Login" id="loginbtn" @click="logIn()" />
+      <form @keyup.enter="logIn()">
+        <input placeholder="Username" type="text" name="userName" id="userName" v-model="userName" />
+        <br />
+        <input
+          placeholder="Password"
+          type="password"
+          name="passWord"
+          id="passWord"
+          v-model="userPassword"
+        />
+        <br />
+        <input type="button" value="Login" id="loginbtn" @click="logIn()" />
+      </form>
       <br />
       <router-link to="/signup" SignUp>Register?</router-link>
     </div>
@@ -42,11 +44,7 @@ export default {
       this.$store.dispatch("login");
       this.$store.commit("setUserName", "");
       this.$store.commit("setUserPassword", "");
-      
-      
-    
-    },
-    
+    }
   },
   computed: computed
 };
