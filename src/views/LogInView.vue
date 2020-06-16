@@ -1,34 +1,34 @@
 <template>
   <div>
     <br />
-    <div v-if="!loggedIn">
-      <img class="animate__animated animate__rollIn" alt="Vue logo" src="../assets/logo3.png" />
+    <!-- <div v-if="!loggedIn"> -->
+    <img class="animate__animated animate__rollIn" alt="Vue logo" src="../assets/logo3.png" />
 
-      <!-- div showing if NOT logged in -->
-      <div id="login-screen">
-        <!--Login-->
-        <form @keyup.enter="logIn()">
-          <input
-            placeholder="Username..."
-            type="text"
-            name="userName"
-            id="username"
-            v-model="userName"
-          />
-          <br />
-          <input
-            placeholder="Password..."
-            type="password"
-            name="passWord"
-            id="passWord"
-            v-model="userPassword"
-          />
-          <br />
-          <input type="button" value="Login" id="loginbtn" @click="logIn()" />
-        </form>
+    <!-- div showing if NOT logged in -->
+    <div class="animate__animated animate__slideInUp" id="login-screen">
+      <!--Login-->
+      <form @keyup.enter="logIn()">
+        <input
+          placeholder="Username..."
+          type="text"
+          name="userName"
+          id="username"
+          v-model="userName"
+        />
         <br />
-        <router-link to="/signup">Don't have an account? Register here!</router-link>
-      </div>
+        <input
+          placeholder="Password..."
+          type="password"
+          name="passWord"
+          id="passWord"
+          v-model="userPassword"
+        />
+        <br />
+        <input type="button" value="Login" id="loginbtn" @click="logIn()" />
+      </form>
+      <br />
+      <router-link to="/signup">Don't have an account? Register here!</router-link>
+      <!-- </div> -->
     </div>
 
     <!-- div showing if logged in -->

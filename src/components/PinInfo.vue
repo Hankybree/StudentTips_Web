@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="pinInt === 2" class="GetPin">
+    <div v-if="pinInt === 2" id="get-pin" class="animate__animated animate__slideInRight">
       <div class="box-1">
         <div v-if="$store.state.pinImage !== 'null'">
           <img :src="$store.state.pinImage" />
@@ -116,7 +116,7 @@ export default {
 
 
 <style scoped>
-.GetPin {
+#get-pin {
   display: flex;
   flex-direction: column;
 
