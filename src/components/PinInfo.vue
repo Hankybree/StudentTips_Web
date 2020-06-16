@@ -18,8 +18,11 @@
       <div class="box-2">
         <p>{{$store.state.pinDescription}}</p>
       </div>
-      <input type="button" value="Close" @click="changePinInt()" />
+      <div id="close-button">
+        <input type="button" value="Close" @click="changePinInt()" />
+      </div>
     </div>
+
     <div v-if="pinInt === 1 || pinInt === 3" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
@@ -116,30 +119,27 @@ export default {
 .GetPin {
   display: flex;
   flex-direction: column;
+
   background-color: #fcbf49;
   border-radius: 8px;
   min-width: 15vw;
   max-width: 25vh;
-  max-height: 80vh;
   min-height: 71vh;
-  max-width: 200px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-all;
+  max-height: 80vh;
 }
 .box-2 {
-  border: 6px solid #f77f00;
-  border-radius: 8px;
   overflow: scroll;
-  min-height: 37vh;
+  height: max-content;
 }
-.box-2 {
-  border: 6px solid #f77f00;
-  border-radius: 8px;
-  overflow: scroll;
+.box-1 {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 5px;
 }
+
 p {
-  word-break: break-all;
+  word-break: normal;
 }
 h2 {
   word-break: break-all;
