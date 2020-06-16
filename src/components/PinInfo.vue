@@ -146,8 +146,8 @@ h2 {
   border: solid 2px black;
 }
 
-#box > img {
-  /* object-fit: cover; */
+#box > div > img {
+  object-fit: cover;
   object-fit: scale-down;
   object-position: -40% 10;
 

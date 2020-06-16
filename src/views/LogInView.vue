@@ -31,7 +31,7 @@
       <div v-else>
         <img class="imageStyle" src="../assets/logo3.png">
       </div>
-      <h2>{{$store.state.user.userName}}</h2>
+      <h2>Hej {{$store.state.user.userName}}!</h2>
     </div>
   </div>
 </template>
