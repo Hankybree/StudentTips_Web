@@ -5,28 +5,26 @@
       <div id="sign-out" v-if="$store.state.loggedIn">
         <router-link to="/map">Map</router-link>
         <router-link to="/">{{ $store.state.user.userName }}</router-link>
-        <input type="button" value="Logout" @click="logout()">
+        <input type="button" value="Logout" @click="logout()" />
       </div>
     </header>
     <router-view></router-view>
     <div id="spacer"></div>
-    <footer id="footer">
-      ©TipTop, All rights reserved 2020
-    </footer>
+    <footer id="footer">©TipTop, All rights reserved 2020</footer>
   </div>
 </template>
 
 <script>
 export default {
   created() {
-    if (localStorage.getItem('token')) {
-      this.$store.dispatch('getSession')
+    if (localStorage.getItem("token")) {
+      this.$store.dispatch("getSession");
     }
   },
   name: "App",
   methods: {
-    logout(){
-    this.$store.dispatch("logout");
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
@@ -85,10 +83,12 @@ html {
 }
 input[type="button"] {
   border-radius: 8px;
+  border: none;
   background-color: rgb(127, 38, 46);
   color: white;
 }
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
   padding-left: 10px;
   height: 30px;
   width: 200px;

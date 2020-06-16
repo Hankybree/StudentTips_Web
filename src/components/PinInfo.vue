@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="pinInt === 2" class="GetPin">
-      <div id="box">
+      <div class="box-1">
         <div v-if="$store.state.pinImage !== 'null'">
           <img :src="$store.state.pinImage" />
         </div>
@@ -15,11 +15,14 @@
         </div>
       </div>
 
-      <div id="box" style="min-height: 37vh;">
+      <div class="box-2">
         <p>{{$store.state.pinDescription}}</p>
       </div>
-      <input type="button" value="Close" @click="changePinInt()" />
+      <div id="close-button">
+        <input type="button" value="Close" @click="changePinInt()" />
+      </div>
     </div>
+
     <div v-if="pinInt === 1 || pinInt === 3" class="PinInfo">
       <div id="post-container">
         <h2>Please create your tip</h2>
@@ -46,7 +49,7 @@
           <input v-model="pinCoordinatesY" />
           <br />
           <input v-model="pinCoordinatesX" />
-        </div> -->
+        </div>-->
 
         <textarea
           id="textarea"
@@ -116,22 +119,27 @@ export default {
 .GetPin {
   display: flex;
   flex-direction: column;
+
   background-color: #fcbf49;
   border-radius: 8px;
   min-width: 15vw;
   max-width: 25vh;
   min-height: 71vh;
-  max-width: 200px;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-all;
+  max-height: 80vh;
 }
-#box {
-  border: 6px solid #f77f00;
-  border-radius: 8px;
+.box-2 {
+  overflow: scroll;
+  height: max-content;
 }
+.box-1 {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 5px;
+}
+
 p {
-  word-break: break-all;
+  word-break: normal;
 }
 h2 {
   word-break: break-all;
@@ -145,9 +153,9 @@ h2 {
   border: solid 2px black;
 }
 
-#box > div > img {
-  /* object-fit: cover; */
-  object-fit: scale-down;
+.box-1 > div > img {
+  object-fit: cover;
+  /*object-fit: scale-down;*/
   object-position: -40% 10;
 
   max-width: 25vw;
