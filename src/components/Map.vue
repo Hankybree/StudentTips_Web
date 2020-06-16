@@ -33,7 +33,7 @@ export default {
   },
   mounted() {
     let map = this.map();
-     var features = [];
+    var features = [];
     var MapboxGeocoder = require("@mapbox/mapbox-gl-geocoder");
     fetch("http://116.203.125.0:12001/pins")
       .then(response => response.json())
@@ -58,25 +58,21 @@ export default {
           });
         });
       });
-       var customData = { 'features': features }
+    var customData = { features: features };
 
-    
-      function forwardGeocoder(query) {
-      var matchingFeatures=[];
-     
-      
+    function forwardGeocoder(query) {
+      var matchingFeatures = [];
+
       for (var i = 0; i < customData.features.length; i++) {
         var feature = customData.features[i];
         // handle queries with different capitalization than the source data by calling toLowerCase()
         if (
-          feature.properties.title
-            .toLowerCase()
-            .search(query.toLowerCase()) !== -1
+          feature.properties.title.toLowerCase().search(query.toLowerCase()) !==
+          -1
         ) {
-          
-          feature['place_name'] = '📌'+ feature.properties.title;
-          feature['center'] = feature.geometry.coordinates;
-         
+          feature["place_name"] = "📌" + feature.properties.title;
+          feature["center"] = feature.geometry.coordinates;
+
           matchingFeatures.push(feature);
         }
       }
@@ -86,14 +82,12 @@ export default {
       new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         localGeocoder: forwardGeocoder,
-        placeholder: 'Enter search ...',
-        marker:false,
+        placeholder: "Enter search ...",
+        marker: false,
         mapboxgl: mapboxgl
       })
     );
     map.addControl(new mapboxgl.NavigationControl());
-
-   
 
     map.addControl(
       new mapboxgl.GeolocateControl({
@@ -138,18 +132,21 @@ export default {
       var point = map.queryRenderedFeatures(e.point, {
         layers: ["points"]
       });
+
       if (point.length) {
         var clickedPoint = point[0];
-        store.commit("setPinInt", 2);
+
         store.commit("setPinTags", clickedPoint.properties.tag);
         store.commit("setPinTitle", clickedPoint.properties.title);
         store.commit("setPinImage", clickedPoint.properties.image);
         store.commit(
           "setPinCoordinatesX",
           clickedPoint.geometry.coordinates[0]
-        )
-        store.commit('setPinCreator', clickedPoint.properties.user)
-        store.commit('setPinId', clickedPoint.properties.pinId)
+        );
+        store.commit("setPinCreator", clickedPoint.properties.user);
+        store.commit("setPinId", clickedPoint.properties.pinId);
+
+        store.commit("setPinInt", 2);
 
         store.commit(
           "setPinCoordinatesY",
@@ -162,7 +159,6 @@ export default {
           center: clickedPoint.geometry.coordinates,
           zoom: 15
         });
-        
       } else {
         var p = e.lngLat;
         store.commit("setPinTitle", "");
